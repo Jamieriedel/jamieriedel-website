@@ -171,6 +171,6 @@ window.SITE_CONTENT = {
     whatsappGreeting: "Hallo Jamie! Ich interessiere mich für ein Shooting.",
     // Formspree-ID eintragen, damit das Formular echte E-Mails sendet!
     // Anleitung: siehe ANLEITUNG.md, Schritt 3
-    formspreeId: ""
+    formspreeId: "xgogplrd"
   }
 };
