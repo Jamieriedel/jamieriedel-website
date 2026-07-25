@@ -1026,17 +1026,12 @@
   const statusEl = document.getElementById('formStatus');
   const submitBtn = document.getElementById('formSubmit');
 
-  if (!C.contact.formspreeId) {
-    document.getElementById('formHint').style.display = 'block';
-    document.getElementById('formHintMail').textContent = C.contact.email;
-  }
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     statusEl.className = 'form-status';
 
     if (!C.contact.formspreeId) {
-      // Fallback: open mail client with pre-filled inquiry
+      // Öffnet das E-Mail-Programm mit vorausgefüllter Anfrage
       const body =
         'Name: ' + form.name.value + '\n' +
         'Service: ' + form.service.value + '\n' +
@@ -1045,6 +1040,9 @@
       window.location.href = 'mailto:' + C.contact.email +
         '?subject=' + encodeURIComponent('Anfrage über jamieriedel.com') +
         '&body=' + encodeURIComponent(body);
+      statusEl.textContent = 'Dein E-Mail-Programm öffnet sich mit deiner Anfrage – bitte nur noch absenden. Alternativ direkt an ' + C.contact.email;
+      statusEl.style.color = 'var(--gray)';
+      statusEl.style.marginTop = '1rem';
       return;
     }
 
