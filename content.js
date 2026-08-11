@@ -52,7 +52,14 @@ window.SITE_CONTENT = {
       { src: "images/galerie-05.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/fc136b07-457e-4b8c-be9c-d66b586ea1d9/_DSC1021.jpg",  category: "Mood",    alt: "Stimmungsbild" },
       { src: "images/galerie-06.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/1725563575294-HA7USCWTOGUA0EMXES3V/_DSC0954.jpg",   category: "Hochzeit",     alt: "Hochzeit" },
       { src: "images/galerie-07.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/6c3273a1-73ff-4247-90f1-7e624daa4609/_DSC1119-2.jpg", category: "Portrait", alt: "Portrait" },
-      { src: "images/galerie-08.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/9f2d9e5f-ccad-43f9-bd51-0f4f6902ca0a/_Z005251.jpg",  category: "Portrait", alt: "Portrait" }
+      { src: "images/galerie-08.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/9f2d9e5f-ccad-43f9-bd51-0f4f6902ca0a/_Z005251.jpg",  category: "Portrait", alt: "Portrait" },
+      { src: "images/galerie-09.webp", category: "Hochzeit", alt: "Hochzeit – Brautpaar" },
+      { src: "images/galerie-10.webp", category: "Hochzeit", alt: "Hochzeit – Brautpaar" },
+      { src: "images/galerie-11.webp", category: "Hochzeit", alt: "Hochzeit – Gast" },
+      { src: "images/galerie-12.webp", category: "Hochzeit", alt: "Hochzeit – Groomsmen" },
+      { src: "images/galerie-13.webp", category: "Hochzeit", alt: "Hochzeit – Feier" },
+      { src: "images/galerie-14.webp", category: "Hochzeit", alt: "Hochzeit – Trauung" },
+      { src: "images/galerie-15.webp", category: "Hochzeit", alt: "Hochzeit" }
     ]
   },
 
