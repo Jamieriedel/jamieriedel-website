@@ -9,8 +9,8 @@ window.SITE_CONTENT = {
 
   // ---------- ALLGEMEIN ----------
   meta: {
-    title: "Jamie's Lens – Hochzeits- & Eventfotografin | Wuppertal",
-    description: "Hochzeits- und Eventfotografin aus Wuppertal. Authentische Momente, zeitlose Bilder. Portraits, Hochzeiten, Events – jetzt Termin anfragen."
+    title: "Jamie's Lens – Hochzeits- & Eventfotograf | Wuppertal",
+    description: "Hochzeits- und Eventfotograf aus Wuppertal. Authentische Momente, zeitlose Bilder. Portraits, Hochzeiten, Events – jetzt Termin anfragen."
   },
 
   // ---------- HERO ----------
@@ -29,12 +29,12 @@ window.SITE_CONTENT = {
     image: "images/about.webp",
     imageFallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/15023dc1-425c-43e3-8d10-3175a1f90169/_DSC6961.jpg",
     paragraphs: [
-      "Ich bin Fotografin aus Wuppertal und leidenschaftlich dabei, echte Momente einzufangen — keine gestellten Posen, sondern das Leben, wie es wirklich ist.",
+      "Ich bin Fotograf aus Wuppertal und leidenschaftlich dabei, echte Momente einzufangen — keine gestellten Posen, sondern das Leben, wie es wirklich ist.",
       "Ob bei eurer Hochzeit, einem Portrait-Shooting oder einem besonderen Event: Ich nehme mir Zeit, euch kennenzulernen, damit ihr vor der Kamera ihr selbst sein könnt.",
       "Mein Stil ist natürlich, stimmungsvoll und zeitlos — Bilder, die ihr in 20 Jahren noch genauso liebt wie heute."
     ],
     stats: [
-      { num: "50+",  label: "Hochzeiten fotografiert" },
+      { num: "10+",  label: "Hochzeiten fotografiert" },
       { num: "3+",   label: "Jahre Erfahrung" },
       { num: "100%", label: "mit Herzblut dabei" },
       { num: "NRW",  label: "& deutschlandweit" }
@@ -46,13 +46,13 @@ window.SITE_CONTENT = {
     categories: ["Hochzeit", "Portrait", "Event", "Mood"],
     items: [
       { src: "images/galerie-01.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/583ac145-8900-4edb-8bbc-a98d1fea6a47/R0001404.JPG",  category: "Portrait", alt: "Portrait Shooting" },
-      { src: "images/galerie-02.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/a945f144-7a79-432c-9e70-24fb18689f84/R0000495.JPG",  category: "Event",    alt: "Event Fotografie" },
+      { src: "images/galerie-02.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/a945f144-7a79-432c-9e70-24fb18689f84/R0000495.JPG",  category: "Portrait",    alt: "Portrait" },
       { src: "images/galerie-03.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/c5daf944-640c-4669-a5de-89d8bf452923/_DSC1282-2.jpg", category: "Hochzeit", alt: "Hochzeitsfotografie" },
-      { src: "images/galerie-04.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/bd1d706d-7938-473c-8b25-c6b7d7c5fd41/R0001705-2.jpg", category: "Portrait", alt: "Portrait" },
-      { src: "images/galerie-05.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/fc136b07-457e-4b8c-be9c-d66b586ea1d9/_DSC1021.jpg",  category: "Event",    alt: "Event" },
-      { src: "images/galerie-06.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/1725563575294-HA7USCWTOGUA0EMXES3V/_DSC0954.jpg",   category: "Mood",     alt: "Stimmungsbild" },
+      { src: "images/galerie-04.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/bd1d706d-7938-473c-8b25-c6b7d7c5fd41/R0001705-2.jpg", category: "Event", alt: "Event" },
+      { src: "images/galerie-05.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/fc136b07-457e-4b8c-be9c-d66b586ea1d9/_DSC1021.jpg",  category: "Mood",    alt: "Stimmungsbild" },
+      { src: "images/galerie-06.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/1725563575294-HA7USCWTOGUA0EMXES3V/_DSC0954.jpg",   category: "Hochzeit",     alt: "Hochzeit" },
       { src: "images/galerie-07.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/6c3273a1-73ff-4247-90f1-7e624daa4609/_DSC1119-2.jpg", category: "Portrait", alt: "Portrait" },
-      { src: "images/galerie-08.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/9f2d9e5f-ccad-43f9-bd51-0f4f6902ca0a/_Z005251.jpg",  category: "Hochzeit", alt: "Hochzeit" }
+      { src: "images/galerie-08.webp", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/9f2d9e5f-ccad-43f9-bd51-0f4f6902ca0a/_Z005251.jpg",  category: "Portrait", alt: "Portrait" }
     ]
   },
 
@@ -140,17 +140,17 @@ window.SITE_CONTENT = {
   // WICHTIG: Ersetze diese Platzhalter durch ECHTE Kundenstimmen!
   testimonials: [
     {
-      text: "Jamie hat unsere Hochzeit so wunderschön eingefangen. Sie war immer da, ohne aufdringlich zu sein — und die Bilder haben uns zum Weinen gebracht (vor Freude!). Absolut zu empfehlen.",
+      text: "Jamie hat unsere Hochzeit so wunderschön eingefangen. Er war immer da, ohne aufdringlich zu sein — und die Bilder haben uns zum Weinen gebracht (vor Freude!). Absolut zu empfehlen.",
       name: "Sarah & Jonas M.",
       event: "Hochzeit · Wuppertal 2024"
     },
     {
-      text: "Das Portrait-Shooting mit Jamie war einfach entspannt und toll. Sie hat sofort eine angenehme Atmosphäre geschaffen und die Bilder sind besser geworden, als ich je erwartet hätte.",
+      text: "Das Portrait-Shooting mit Jamie war einfach entspannt und toll. Er hat sofort eine angenehme Atmosphäre geschaffen und die Bilder sind besser geworden, als ich je erwartet hätte.",
       name: "Lena K.",
       event: "Portrait Shooting · 2024"
     },
     {
-      text: "Für unser Firmenevent war Jamie genau die Richtige. Professionell, schnell, und die Fotos hatten wirklich eine besondere Qualität. Gerne wieder!",
+      text: "Für unser Firmenevent war Jamie genau der Richtige. Professionell, schnell, und die Fotos hatten wirklich eine besondere Qualität. Gerne wieder!",
       name: "Markus T.",
       event: "Firmenevent · Düsseldorf 2023"
     }
