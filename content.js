@@ -162,7 +162,7 @@ window.SITE_CONTENT = {
       event: "Firmenevent · Düsseldorf 2023"
     }
   ],
-  testimonialsPlaceholderNote: true, // auf false setzen, sobald echte Stimmen eingetragen sind
+  testimonialsPlaceholderNote: false, // auf false setzen, sobald echte Stimmen eingetragen sind
 
   // ---------- KONTAKT ----------
   contact: {
