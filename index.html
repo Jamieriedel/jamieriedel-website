@@ -3,47 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jamie's Lens – Hochzeits- & Eventfotograf | Wuppertal</title>
-  <meta name="description" content="Hochzeits- und Eventfotograf aus Wuppertal. Authentische Momente, zeitlose Bilder. Portraits, Hochzeiten, Events – jetzt Termin anfragen." />
-  <meta property="og:title" content="Jamie's Lens – Fotografie Wuppertal" />
-  <meta property="og:description" content="Hochzeiten, Portraits & Events. Authentische Momente, zeitlose Bilder." />
+  <title>Hochzeitsfotograf Wuppertal & NRW – Jamie's Lens | Portraits & Events</title>
+  <meta name="description" content="Hochzeitsfotograf aus Wuppertal ✓ Authentische Hochzeitsreportagen, Portraits & Eventfotografie in NRW ✓ Faire Preise ab 100 € ✓ Jetzt unverbindlich anfragen!" />
+  <link rel="canonical" href="https://jamieriedel.com/" />
+  <meta property="og:title" content="Hochzeitsfotograf Wuppertal & NRW – Jamie's Lens" />
+  <meta property="og:description" content="Authentische Hochzeitsreportagen, Portraits & Eventfotografie in NRW. Jetzt unverbindlich anfragen." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://jamieriedel.com/images/hero.webp" />
   <meta property="og:url" content="https://jamieriedel.com/" />
   <meta property="og:locale" content="de_DE" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://jamieriedel.com/images/hero.webp" />
-  <meta name="twitter:title" content="Jamie's Lens – Fotograf Wuppertal" />
-  <meta name="twitter:description" content="Hochzeiten, Portraits & Events. Authentische Momente, zeitlose Bilder – Wuppertal & NRW." />
-  <meta name="twitter:image:alt" content="Hochzeitsfotografie in Wuppertal – Jamie's Lens" />
-  <meta property="og:site_name" content="Jamie's Lens" />
-  <meta property="og:image:alt" content="Hochzeitsfotografie in Wuppertal – Jamie's Lens" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="author" content="Jamie Riedel" />
-  <meta name="theme-color" content="#111110" />
-  <link rel="canonical" href="https://jamieriedel.com/" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="fonts.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://jamieriedel.com/#business",
-    "name": "Jamie's Lens",
-    "image": "https://jamieriedel.com/images/hero.webp",
-    "description": "Hochzeits- und Eventfotograf aus Wuppertal. Authentische Momente, zeitlose Bilder. Portraits, Hochzeiten, Events.",
-    "url": "https://jamieriedel.com/",
-    "telephone": "+491771846741",
-    "email": "jamie.lee.riedel@gmail.com",
-    "areaServed": ["Wuppertal", "Nordrhein-Westfalen", "Deutschland"],
-    "address": { "@type": "PostalAddress", "addressLocality": "Wuppertal", "addressRegion": "NRW", "addressCountry": "DE" },
-    "priceRange": "€€",
-    "geo": { "@type": "GeoCoordinates", "latitude": 51.2562, "longitude": 7.1508 },
-    "founder": { "@type": "Person", "name": "Jamie Riedel", "jobTitle": "Fotograf" },
-    "knowsAbout": ["Hochzeitsfotografie", "Portraitfotografie", "Eventfotografie"],
-    "sameAs": ["https://instagram.com/jamieriedel"]
-  }
-  </script>
+  <meta name="geo.region" content="DE-NW" />
+  <meta name="geo.placename" content="Wuppertal" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -57,7 +29,7 @@
       --sans: 'DM Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--white);
@@ -127,8 +99,6 @@
       text-decoration: none;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { padding: 0.35rem 0; }
-    .mobile-menu-cta { background: var(--black); color: var(--white); padding: 0.9rem 1.5rem !important; text-align: center; letter-spacing: 0.12em; }
 
     /* ── HERO ── */
     #hero {
@@ -206,7 +176,7 @@
     .hero-image img {
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 30%;
       filter: grayscale(8%);
       transition: transform 6s ease;
     }
@@ -258,7 +228,7 @@
     /* ── ABOUT ── */
     #about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
     .about-image { position: relative; }
-    .about-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .about-image img { width: 100%; aspect-ratio: 2/3; object-fit: cover; object-position: center top; }
     .about-image-accent {
       position: absolute; top: -1.5rem; left: -1.5rem;
       width: 60%; height: 60%;
@@ -508,6 +478,76 @@
     }
     .wa-btn:hover + .wa-tooltip { opacity: 1; }
 
+    /* ── CONVERSION ELEMENTS ── */
+    .availability-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.75rem; letter-spacing: 0.05em;
+      color: var(--black);
+      background: rgba(200,169,126,0.14);
+      border: 1px solid rgba(200,169,126,0.4);
+      padding: 0.5rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .availability-badge::before {
+      content: '';
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4a7c59;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .cta-banner {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-banner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .cta-banner h2 em { font-style: italic; color: var(--accent); }
+    .cta-banner p { font-size: 0.95rem; color: rgba(255,255,255,0.6); margin-bottom: 2.2rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .cta-banner .btn-primary { background: var(--accent); color: var(--black); font-weight: 500; }
+    .cta-banner .btn-primary:hover { background: var(--white); }
+
+    .response-promise {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; color: var(--gray);
+    }
+    .response-promise::before { content: '⏱'; }
+
+    /* Sticky mobile CTA bar */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 95;
+      background: var(--black);
+      padding: 0.7rem 1rem;
+      gap: 0.7rem;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+      transform: translateY(110%);
+      transition: transform 0.35s ease;
+    }
+    .mobile-cta-bar.show { transform: translateY(0); }
+    .mobile-cta-bar a {
+      flex: 1;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 0.5rem;
+    }
+    .mobile-cta-bar .bar-anfrage { background: var(--accent); color: var(--black); font-weight: 500; }
+    .mobile-cta-bar .bar-wa { border: 1px solid rgba(255,255,255,0.3); color: var(--white); }
+    @media (max-width: 900px) {
+      .mobile-cta-bar { display: flex; }
+      .wa-btn, .wa-tooltip { display: none !important; }
+      footer { padding-bottom: 6rem; }
+    }
+
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--black); color: var(--white); }
     #testimonials .section-title { color: var(--white); }
@@ -654,7 +694,7 @@
     <li><a href="#contact">Kontakt</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Anfragen</a>
-  <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" onclick="this.setAttribute('aria-expanded', document.getElementById('mobileMenu').classList.toggle('open'));">
+  <button class="hamburger" aria-label="Menü öffnen" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -663,13 +703,13 @@
   <li><a href="#gallery" onclick="closeMenu()">Portfolio</a></li>
   <li><a href="#services" onclick="closeMenu()">Services</a></li>
   <li><a href="#contact" onclick="closeMenu()">Kontakt</a></li>
-  <li><a href="#contact" class="mobile-menu-cta" onclick="closeMenu()">Anfragen</a></li>
 </ul>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-text fade-up">
     <p class="hero-tag" id="heroTag"></p>
+    <div class="availability-badge" id="availBadge" style="display:none;"></div>
     <h1 class="hero-title" id="heroTitle"></h1>
     <p class="hero-sub" id="heroSub"></p>
     <div class="hero-actions">
@@ -678,7 +718,7 @@
     </div>
   </div>
   <div class="hero-image">
-    <img id="heroImage" alt="Hochzeitsfotografie in Wuppertal – Jamie's Lens" loading="eager" fetchpriority="high" decoding="async" />
+    <img id="heroImage" alt="Jamie Riedel Fotografie" loading="eager" />
   </div>
   <div class="hero-scroll">Scroll</div>
 </section>
@@ -692,7 +732,7 @@
 <section id="about">
   <div class="about-image fade-up">
     <div class="about-image-accent"></div>
-    <img id="aboutImage" alt="Jamie Riedel – Fotograf aus Wuppertal" loading="lazy" decoding="async" />
+    <img id="aboutImage" alt="Jamie-Lee Riedel" loading="lazy" />
   </div>
   <div class="about-text fade-up">
     <p class="section-label">Über mich</p>
@@ -722,6 +762,13 @@
   <img id="lightboxImg" alt="" />
 </div>
 
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Gefällt dir, was du <em>siehst?</em></h2>
+  <p>Dann lass uns über dein Shooting sprechen — unverbindlich, ehrlich und ohne Verkaufsdruck. Termine sind begrenzt, also melde dich am besten frühzeitig.</p>
+  <a href="#contact" class="btn-primary">Unverbindliche Anfrage senden</a>
+</div>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 1rem;">
@@ -743,6 +790,16 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="fade-up" style="text-align:center; max-width:600px; margin: 0 auto;">
+    <p class="section-label" style="color:var(--accent)">Kundenstimmen</p>
+    <h2 class="section-title">Was andere über mich<br><em>sagen</em></h2>
+  </div>
+  <div class="testimonials-grid" id="testimonialsGrid"></div>
+  <p class="testimonials-note" id="testimonialsNote" style="display:none;">* Beispiel-Testimonials — ersetze diese durch echte Kundenstimmen (admin.html)</p>
+</section>
+
 <!-- FAQ -->
 <section id="faq">
   <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto;">
@@ -752,21 +809,11 @@
   <div class="faq-list" id="faqList"></div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="fade-up" style="text-align:center; max-width:600px; margin: 0 auto;">
-    <p class="section-label" style="color:var(--accent)">Stimmen</p>
-    <h2 class="section-title">Was Kund:innen<br><em>sagen</em></h2>
-  </div>
-  <div class="testimonials-grid" id="testimonialsGrid"></div>
-  <p class="testimonials-note" id="testimonialsNote" style="display:none;">* Beispiel-Testimonials — ersetze diese durch echte Kundenstimmen (admin.html)</p>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-info fade-up">
     <p class="section-label">Kontakt</p>
-    <h2 class="section-title">Lass uns<br><em>reden</em></h2>
+    <h2 class="section-title">Lass uns einfach<br>mal <em>quatschen</em></h2>
     <p id="contactIntro"></p>
     <div id="contactDetails"></div>
   </div>
@@ -795,7 +842,9 @@
         <label for="message">Deine Nachricht *</label>
         <textarea id="message" name="nachricht" placeholder="Erzähl mir von deinem Wunsch-Shooting — Anlass, Ort, besondere Wünsche…" required></textarea>
       </div>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
       <button type="submit" class="form-submit" id="formSubmit">Anfrage senden</button>
+      <div class="response-promise" id="responsePromise" style="display:none;"></div>
       <div class="form-status" id="formStatus"></div>
       <p class="form-hint" id="formHint" style="display:none;">⚠ Formular noch nicht aktiviert — Formspree-ID fehlt (siehe ANLEITUNG.md, Schritt 3). Bis dahin: E-Mail direkt an <span id="formHintMail"></span></p>
     </form>
@@ -807,6 +856,12 @@
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 <span class="wa-tooltip">Schnelle Frage? Schreib mir!</span>
+
+<!-- STICKY MOBILE CTA -->
+<div class="mobile-cta-bar" id="mobileCtaBar">
+  <a href="#contact" class="bar-anfrage">✦ Anfrage senden</a>
+  <a class="bar-wa" id="mobileCtaWa" target="_blank" rel="noopener" style="display:none;">WhatsApp</a>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -825,17 +880,30 @@
 
 <script src="content.js"></script>
 <script>
+  // ── AUSFALLSICHERUNG ──
+  // Falls content.js fehlt oder kaputt ist: verständliche Meldung statt leerer Seite
+  if (!window.SITE_CONTENT) {
+    document.body.innerHTML = '<div style="font-family:sans-serif; max-width:560px; margin:15vh auto; padding:2rem; line-height:1.7;">' +
+      '<h1 style="font-size:1.3rem;">⚠ Inhalte konnten nicht geladen werden</h1>' +
+      '<p>Die Datei <strong>content.js</strong> fehlt oder enthält einen Fehler.</p>' +
+      '<p><strong>So behebst du das:</strong> Öffne admin.html, lade eine frische content.js herunter und ersetze die Datei im GitHub-Repository. Bearbeite content.js möglichst nie von Hand — nutze immer admin.html.</p></div>';
+    throw new Error('SITE_CONTENT missing');
+  }
   const C = window.SITE_CONTENT;
 
-  // Helper: set image with automatic fallback (local first, then Squarespace CDN)
-  function setImg(imgEl, src, fallback) {
+  // Helper: set image with automatic fallback (local first, then Squarespace CDN).
+  // If NOTHING loads (e.g. Tippfehler im Pfad), wird das Element sauber versteckt,
+  // damit die Galerie nie "zerschossen" aussieht.
+  function setImg(imgEl, src, fallback, hideTargetOnFail) {
     imgEl.src = src;
-    if (fallback) {
-      imgEl.onerror = function() {
-        if (this.src.indexOf(fallback) === -1) { this.src = fallback; }
+    imgEl.onerror = function() {
+      if (fallback && this.src.indexOf(fallback) === -1) {
+        this.src = fallback;
+      } else {
         this.onerror = null;
-      };
-    }
+        if (hideTargetOnFail) hideTargetOnFail.style.display = 'none';
+      }
+    };
   }
 
   // ── HERO ──
@@ -900,8 +968,7 @@
       const img = document.createElement('img');
       img.alt = item.alt || item.category;
       img.loading = 'lazy';
-      img.decoding = 'async';
-      setImg(img, item.src, item.fallback);
+      setImg(img, item.src, item.fallback, div);
       const overlay = document.createElement('div');
       overlay.className = 'gallery-item-overlay';
       overlay.innerHTML = '<span class="gallery-item-tag">' + escapeHtml(item.category) + '</span>';
@@ -1043,12 +1110,17 @@
   const statusEl = document.getElementById('formStatus');
   const submitBtn = document.getElementById('formSubmit');
 
+  if (!C.contact.formspreeId) {
+    document.getElementById('formHint').style.display = 'block';
+    document.getElementById('formHintMail').textContent = C.contact.email;
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     statusEl.className = 'form-status';
 
     if (!C.contact.formspreeId) {
-      // Öffnet das E-Mail-Programm mit vorausgefüllter Anfrage
+      // Fallback: open mail client with pre-filled inquiry
       const body =
         'Name: ' + form.name.value + '\n' +
         'Service: ' + form.service.value + '\n' +
@@ -1057,9 +1129,6 @@
       window.location.href = 'mailto:' + C.contact.email +
         '?subject=' + encodeURIComponent('Anfrage über jamieriedel.com') +
         '&body=' + encodeURIComponent(body);
-      statusEl.textContent = 'Dein E-Mail-Programm öffnet sich mit deiner Anfrage – bitte nur noch absenden. Alternativ direkt an ' + C.contact.email;
-      statusEl.style.color = 'var(--gray)';
-      statusEl.style.marginTop = '1rem';
       return;
     }
 
@@ -1086,10 +1155,84 @@
     submitBtn.textContent = 'Anfrage senden';
   });
 
+  // ── CONVERSION-ELEMENTE ──
+  if (C.availabilityNote) {
+    const badge = document.getElementById('availBadge');
+    badge.textContent = C.availabilityNote;
+    badge.style.display = 'inline-flex';
+  }
+  if (C.responsePromise) {
+    const rp = document.getElementById('responsePromise');
+    rp.textContent = C.responsePromise;
+    rp.style.display = 'flex';
+  }
+
+  // Sticky Mobile-CTA-Leiste: erscheint nach dem Hero, verschwindet im Kontaktbereich
+  const ctaBar = document.getElementById('mobileCtaBar');
+  if (C.contact.whatsappEnabled && C.contact.whatsappNumber) {
+    const mwa = document.getElementById('mobileCtaWa');
+    mwa.href = 'https://wa.me/' + C.contact.whatsappNumber.replace(/\D/g, '') +
+      '?text=' + encodeURIComponent(C.contact.whatsappGreeting || '');
+    mwa.style.display = 'block';
+  }
+  const contactSection = document.getElementById('contact');
+  window.addEventListener('scroll', () => {
+    const pastHero = window.scrollY > window.innerHeight * 0.7;
+    const contactRect = contactSection.getBoundingClientRect();
+    const inContact = contactRect.top < window.innerHeight && contactRect.bottom > 0;
+    ctaBar.classList.toggle('show', pastHero && !inContact);
+  }, { passive: true });
+
+  // ── SEO: STRUKTURIERTE DATEN (Schema.org) ──
+  const siteUrl = (C.meta && C.meta.siteUrl) || 'https://jamieriedel.com';
+  const schemaBusiness = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": siteUrl + "/#business",
+    "name": "Jamie's Lens – Fotografie Jamie-Lee Riedel",
+    "description": (C.meta && C.meta.description) || '',
+    "url": siteUrl,
+    "email": C.contact.email,
+    "telephone": C.contact.phone,
+    "address": { "@type": "PostalAddress", "addressLocality": "Wuppertal", "addressRegion": "NRW", "addressCountry": "DE" },
+    "areaServed": ["Wuppertal", "Düsseldorf", "Köln", "Essen", "Nordrhein-Westfalen"],
+    "sameAs": [C.contact.instagramUrl],
+    "priceRange": "€€",
+    "makesOffer": C.services.map(s => ({
+      "@type": "Offer",
+      "name": s.name,
+      "description": s.desc,
+      "price": (s.price.match(/\d+/) || [''])[0],
+      "priceCurrency": "EUR"
+    }))
+  };
+  const schemaFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": (C.faq || []).map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  };
+  [schemaBusiness, schemaFaq].forEach(obj => {
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(obj);
+    document.head.appendChild(s);
+  });
+
+  // Meta-Titel/-Beschreibung aus content.js aktualisieren (falls dort geändert)
+  if (C.meta) {
+    if (C.meta.title) document.title = C.meta.title;
+    const md = document.querySelector('meta[name="description"]');
+    if (md && C.meta.description) md.setAttribute('content', C.meta.description);
+  }
+
   // ── MISC ──
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); var h=document.querySelector('.hamburger'); if(h) h.setAttribute('aria-expanded','false'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
   function escapeHtml(str) {
     return String(str).replace(/[&<>"']/g, m => ({
