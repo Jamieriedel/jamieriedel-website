@@ -15,10 +15,8 @@ window.SITE_CONTENT = {
   },
 
   // ---------- CONVERSION-ELEMENTE ----------
-  // Verfügbarkeits-Hinweis (leer lassen zum Ausblenden)
   availabilityNote: "Für 2026 sind noch einzelne Hochzeitstermine frei",
-  // Versprechen unter dem Formular-Button
-  responsePromise: "Antwort innerhalb von 24 Stunden — versprochen.",
+  responsePromise: "Ich melde mich innerhalb von 24 Stunden bei dir.",
 
   // ---------- HERO ----------
   hero: {
@@ -26,7 +24,7 @@ window.SITE_CONTENT = {
     titleLine1: "Momente,",
     titleLine2Prefix: "die ",
     titleLine2Em: "bleiben",
-    subtitle: "Hochzeiten, Portraits, Events — ich fotografiere das Echte. Die Blicke, die Lachen, die stillen Sekunden zwischen den großen Momenten.",
+    subtitle: "Ich fotografiere Hochzeiten, Portraits und Events. Echte Momente, echte Emotionen. Keine Standardposen, sondern Bilder, die sich nach euch anfühlen.",
     image: "images/hero.jpg",
     imageFallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/919c4157-625a-415a-bead-4af745e25453/_DSC2039.JPG"
   },
@@ -36,9 +34,9 @@ window.SITE_CONTENT = {
     image: "images/fotograf-jamie-lee-riedel-wuppertal.jpg",
     imageFallback: "",
     paragraphs: [
-      "Ich bin Fotograf aus Wuppertal und leidenschaftlich dabei, echte Momente einzufangen — keine gestellten Posen, sondern das Leben, wie es wirklich ist.",
-      "Ob bei eurer Hochzeit, einem Portrait-Shooting oder einem besonderen Event: Ich nehme mir Zeit, euch kennenzulernen, damit ihr vor der Kamera ihr selbst sein könnt.",
-      "Mein Stil ist natürlich, stimmungsvoll und zeitlos — Bilder, die ihr in 20 Jahren noch genauso liebt wie heute."
+      "Hey, ich bin Jamie. Ich komme aus Wuppertal und fotografiere seit ein paar Jahren das, was mich am meisten begeistert: echte Menschen in echten Momenten.",
+      "Mir ist es wichtig, dass ihr euch vor meiner Kamera wohlfühlt. Kein steifes Posing, kein Stress. Wir lernen uns vorher kennen, quatschen ein bisschen und wenn es dann losgeht, seid ihr einfach ihr selbst.",
+      "Meine Bilder sind natürlich, ehrlich und haben Stimmung. Die Art von Fotos, die ihr euch in zehn Jahren anschaut und sofort wieder wisst, wie sich dieser Moment angefühlt hat."
     ],
     stats: [
       { num: "10+",  label: "Hochzeiten fotografiert" },
@@ -67,8 +65,16 @@ window.SITE_CONTENT = {
   // ---------- SERVICES ----------
   services: [
     {
+      name: "Hochzeit",
+      desc: "Euer großer Tag, so festgehalten, wie er sich wirklich anfühlt. Ich bin den ganzen Tag an eurer Seite, halte mich im Hintergrund und fange genau die Momente ein, an die ihr euch für immer erinnern wollt.",
+      includes: ["Ganztages-Begleitung möglich", "Vorgespräch zum Kennenlernen", "Alle wichtigen Momente", "Individuell auf euch abgestimmt"],
+      price: "auf Anfrage",
+      priceNote: "Jede Hochzeit ist anders",
+      cta: "Unverbindlich anfragen →"
+    },
+    {
       name: "Portrait",
-      desc: "Ein Shooting ganz für dich — entspannt, natürlich, mit Bildern, die wirklich du bist.",
+      desc: "Ein Shooting nur für dich. Entspannt, ohne Druck und mit Bildern, auf denen du dich wirklich erkennst.",
       includes: ["1 Person", "1 Stunde Shooting", "15 bearbeitete Fotos", "Online-Galerie zum Download"],
       price: "100 €",
       priceNote: "Festpreis",
@@ -76,24 +82,16 @@ window.SITE_CONTENT = {
     },
     {
       name: "Couple / Familie",
-      desc: "Eure Verbindung, festgehalten. Für Paare, Familien oder Freundesgruppen.",
+      desc: "Für Paare, Familien oder eure beste Crew. Einfach zusammen sein, Spaß haben und nebenbei richtig gute Bilder mitnehmen.",
       includes: ["2 oder mehr Personen", "1 Stunde Shooting", "20 bearbeitete Fotos", "Online-Galerie zum Download"],
       price: "150 €",
       priceNote: "Festpreis",
       cta: "Jetzt buchen →"
     },
     {
-      name: "Hochzeit",
-      desc: "Euer schönster Tag verdient die besten Bilder. Ich begleite euch durch den ganzen Tag — unauffällig, aber immer zur Stelle.",
-      includes: ["Ganztages-Begleitung möglich", "Alle wichtigen Momente", "Individuelles Angebot", "Vorgespräch inklusive"],
-      price: "ab 800 €",
-      priceNote: "Je nach Umfang",
-      cta: "Unverbindlich anfragen →"
-    },
-    {
       name: "Events",
-      desc: "Firmenevents, Partys, Konzerte — ich halte die Energie und die Momente fest, die zählen.",
-      includes: ["Flexible Zeitplanung", "Schnelle Lieferzeit", "Individuelles Angebot", "Erfahrung mit großen Events"],
+      desc: "Ob Firmenevent, Geburtstagsfeier oder Konzert. Ich halte die Stimmung fest, die Energie und die Gesichter, die den Abend ausmachen.",
+      includes: ["Flexible Zeitplanung", "Schnelle Lieferung", "Individuelles Angebot", "Erfahrung mit großen Events"],
       price: "ab 300 €",
       priceNote: "Je nach Umfang",
       cta: "Unverbindlich anfragen →"
@@ -103,16 +101,16 @@ window.SITE_CONTENT = {
   // ---------- SO LÄUFT'S AB ----------
   process: [
     {
-      title: "Kennenlernen",
-      text: "Du schreibst mir kurz, was du dir vorstellst — per Formular oder WhatsApp. Wir telefonieren oder treffen uns auf einen Kaffee und klären alle Fragen. Unverbindlich und entspannt."
+      title: "Schreib mir",
+      text: "Erzähl mir kurz, was du vorhast. Per Formular, WhatsApp oder einfach eine Nachricht auf Instagram. Wir telefonieren oder treffen uns auf einen Kaffee und besprechen alles in Ruhe."
     },
     {
       title: "Das Shooting",
-      text: "Am großen Tag bin ich da — vorbereitet, unauffällig und mit einem Blick für die echten Momente. Du musst nichts können, außer du selbst zu sein."
+      text: "Am Tag selbst bin ich einfach da. Gut vorbereitet, entspannt und mit einem Auge für die Momente, die zählen. Ihr müsst nichts können außer ihr selbst sein."
     },
     {
-      title: "Deine Galerie",
-      text: "Innerhalb von 2–3 Wochen bekommst du deine sorgfältig bearbeiteten Bilder in einer privaten Online-Galerie — zum Anschauen, Herunterladen und Teilen."
+      title: "Eure Bilder",
+      text: "Nach 2 bis 3 Wochen bekommt ihr eure fertig bearbeiteten Bilder in einer privaten Online-Galerie. Anschauen, runterladen, teilen, freuen."
     }
   ],
 
@@ -120,32 +118,31 @@ window.SITE_CONTENT = {
   faq: [
     {
       q: "Wie viele Bilder bekomme ich?",
-      a: "Das hängt vom Paket ab: Bei Portraits sind es mindestens 15, bei Paaren 20 sorgfältig bearbeitete Bilder. Bei Hochzeiten und Events besprechen wir den Umfang individuell — in der Regel sind es mehrere hundert Bilder für einen ganzen Hochzeitstag."
+      a: "Bei Portraits sind es mindestens 15, bei Paar- und Familien-Shootings 20 fertig bearbeitete Bilder. Bei Hochzeiten hängt es vom Tag ab, aber in der Regel sind es mehrere hundert."
     },
     {
       q: "Wie lange dauert es, bis die Bilder fertig sind?",
-      a: "Portrait- und Paar-Shootings liefere ich innerhalb von 1–2 Wochen. Bei Hochzeiten nehme ich mir 2–3 Wochen Zeit für die Bearbeitung — gute Bilder brauchen Sorgfalt. Einzelne Vorschau-Bilder bekommt ihr oft schon nach wenigen Tagen."
+      a: "Portrait- und Paar-Shootings sind meistens nach 1 bis 2 Wochen fertig. Bei Hochzeiten brauche ich 2 bis 3 Wochen, weil ich mir für die Bearbeitung wirklich Zeit nehme. Ein paar Vorschau-Bilder schicke ich euch aber meistens schon nach ein paar Tagen."
     },
     {
       q: "Fährst du auch außerhalb von Wuppertal?",
-      a: "Ja! Ich bin in ganz NRW und auf Anfrage deutschlandweit unterwegs. Innerhalb von 30 km um Wuppertal ist die Anfahrt inklusive, darüber hinaus berechne ich eine faire Kilometerpauschale — das klären wir transparent im Voraus."
+      a: "Klar! Ich bin in ganz NRW unterwegs und auf Anfrage auch deutschlandweit. Bis 30 km um Wuppertal ist die Anfahrt inklusive, alles darüber hinaus besprechen wir vorher, damit es für beide Seiten passt."
     },
     {
       q: "Was ist, wenn es am Shooting-Tag regnet?",
-      a: "Kein Stress — wir finden immer eine Lösung. Entweder verlegen wir den Termin kostenlos, oder wir nutzen das Wetter kreativ. Manche der schönsten Bilder entstehen bei bedecktem Himmel oder mit Regenschirm."
+      a: "Kein Problem. Entweder verschieben wir kostenlos oder wir machen das Beste draus. Ganz ehrlich: manche der coolsten Bilder sind bei Regen entstanden."
     },
     {
-      q: "Wie läuft die Bezahlung ab?",
-      a: "Bei Hochzeiten sichert eine Anzahlung euren Termin, der Rest ist nach der Bildübergabe fällig. Shootings werden nach dem Termin bezahlt. Du bekommst immer eine ordentliche Rechnung."
+      q: "Wie läuft die Bezahlung?",
+      a: "Bei Hochzeiten sichert eine Anzahlung euren Termin, der Rest kommt nach der Bildübergabe. Shootings werden nach dem Termin bezahlt. Ihr bekommt natürlich immer eine ordentliche Rechnung."
     },
     {
-      q: "Können wir uns vorher unverbindlich kennenlernen?",
-      a: "Unbedingt — das ist mir sogar wichtig! Gerade bei Hochzeiten sollte die Chemie stimmen. Ein Kennenlern-Gespräch ist immer kostenlos und unverbindlich."
+      q: "Können wir uns vorher kennenlernen?",
+      a: "Auf jeden Fall, das ist mir sogar super wichtig. Gerade bei Hochzeiten muss die Chemie stimmen. Ein erstes Gespräch ist immer kostenlos und komplett unverbindlich."
     }
   ],
 
   // ---------- TESTIMONIALS ----------
-  // WICHTIG: Ersetze diese Platzhalter durch ECHTE Kundenstimmen!
   testimonials: [
     {
       text: "Ein herausragender Fotograf und gleichzeitig ein Mensch, dem ich vollkommen vertrauen konnte. Er hat den schönsten Tag meines Lebens mit wunderschönen, authentischen Bildern für die Ewigkeit festgehalten. Absolute Empfehlung!",
@@ -162,18 +159,15 @@ window.SITE_CONTENT = {
 
   // ---------- KONTAKT ----------
   contact: {
-    introText: "Ich freue mich über jede Anfrage — egal ob du schon genaue Vorstellungen hast oder noch unsicher bist. Schreib mir einfach, und wir finden gemeinsam heraus, was zu dir passt.",
+    introText: "Du hast Interesse oder einfach eine Frage? Schreib mir gerne. Egal ob du schon einen festen Termin im Kopf hast oder erstmal nur schauen willst, was möglich ist. Ich freu mich auf deine Nachricht.",
     email: "jamie.lee.riedel@gmail.com",
     phone: "+49 1771 846741",
     location: "Wuppertal · NRW · deutschlandweit",
     instagram: "@jamieriedel",
     instagramUrl: "https://instagram.com/jamieriedel",
-    // WhatsApp-Button (schwebender Button unten rechts)
     whatsappEnabled: true,
-    whatsappNumber: "491771846741", // ohne + und ohne Leerzeichen
-    whatsappGreeting: "Hallo Jamie! Ich interessiere mich für ein Shooting.",
-    // Formspree-ID eintragen, damit das Formular echte E-Mails sendet!
-    // Anleitung: siehe ANLEITUNG.md, Schritt 3
+    whatsappNumber: "491771846741",
+    whatsappGreeting: "Hey Jamie! Ich hätte Interesse an einem Shooting.",
     formspreeId: ""
   }
 };
