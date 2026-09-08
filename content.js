@@ -50,6 +50,7 @@ window.SITE_CONTENT = {
   gallery: {
     categories: ["Hochzeit", "Portrait", "Event", "Mood"],
     items: [
+      { src: "images/hochzeit-standesamt-trauung.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar bei der Trauung im Standesamt" },
       { src: "images/hochzeit-brautpaar-standesamt-treppen.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar verlässt das Standesamt" },
       { src: "images/galerie-01.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/583ac145-8900-4edb-8bbc-a98d1fea6a47/R0001404.JPG", category: "Portrait", alt: "Portrait Shooting" },
       { src: "images/hochzeit-brautpaar-schwarzweiss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar in Schwarzweiss" },
