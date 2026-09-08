@@ -50,7 +50,6 @@ window.SITE_CONTENT = {
   gallery: {
     categories: ["Hochzeit", "Portrait", "Event", "Mood"],
     items: [
-      { src: "images/hochzeit-standesamt-trauung.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar bei der Trauung im Standesamt" },
       { src: "images/hochzeit-brautpaar-standesamt-treppen.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar verlässt das Standesamt" },
       { src: "images/galerie-01.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/583ac145-8900-4edb-8bbc-a98d1fea6a47/R0001404.JPG", category: "Portrait", alt: "Portrait Shooting" },
       { src: "images/hochzeit-brautpaar-schwarzweiss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar in Schwarzweiss" },
@@ -58,6 +57,7 @@ window.SITE_CONTENT = {
       { src: "images/hochzeit-brautpaar-parkbank-kuss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar auf der Parkbank" },
       { src: "images/galerie-03.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/c5daf944-640c-4669-a5de-89d8bf452923/_DSC1282-2.jpg", category: "Hochzeit", alt: "Hochzeitsfotografie" },
       { src: "images/hochzeit-groomsmen-gruppenfoto.jpg", fallback: "", category: "Hochzeit", alt: "Groomsmen Gruppenfoto bei der Hochzeit" },
+      { src: "images/hochzeit-standesamt-trauung.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar bei der Trauung im Standesamt" },
       { src: "images/galerie-04.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/bd1d706d-7938-473c-8b25-c6b7d7c5fd41/R0001705-2.jpg", category: "Portrait", alt: "Portrait" },
       { src: "images/hochzeit-erster-tanz-gaeste.jpg", fallback: "", category: "Hochzeit", alt: "Erster Tanz mit begeisterten Gästen" },
       { src: "images/galerie-05.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/fc136b07-457e-4b8c-be9c-d66b586ea1d9/_DSC1021.jpg", category: "Event", alt: "Event" },
