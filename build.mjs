@@ -124,6 +124,12 @@ function offerFor(s, url) {
   return offer;
 }
 
+function packageOffers(url) {
+  return (C.weddingPackages || []).map((p) => ({ '@type': 'Offer', url, priceCurrency: 'EUR', price: String(p.price), availability: 'https://schema.org/InStock',
+    name: 'Hochzeitspaket ' + p.name,
+    itemOffered: { '@type': 'Service', name: 'Hochzeitsfotografie – ' + p.name, description: [p.desc, p.hours, p.images].join(' · '), provider: { '@id': BUSINESS_ID } } }));
+}
+
 function breadcrumb(name, url) {
   return { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE + '/' },
@@ -335,6 +341,29 @@ function sectionServices({ services = C.services, more = true, title = 'Was wir 
 </section>`;
 }
 
+function sectionPackages({ title = 'Hochzeits<em>pakete</em>' } = {}) {
+  const P = C.weddingPackages || [];
+  if (!P.length) return '';
+  const fmt = (n) => n.toLocaleString('de-DE') + ' €';
+  return `<section id="pakete">
+  <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 1rem;">
+    <p class="section-label">Hochzeit</p>
+    <h2 class="section-title">${title}</h2>
+  </div>
+  <div class="services-grid">
+    ${P.map((p, i) => `<article class="service-card fade-up${p.highlight ? ' service-card--highlight' : ''}">
+      <div class="service-num">${p.highlight ? 'Beliebt' : String(i + 1).padStart(2, '0')}</div>
+      <h3 class="service-name">${esc(p.name)}</h3>
+      <p class="service-desc">${esc(p.desc)}</p>
+      <ul class="service-includes"><li>${esc(p.hours)}</li><li>${esc(p.images)}</li>${p.includes.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+      <div class="service-price">${fmt(p.price)}<small>Paketpreis</small></div>
+      <a href="#contact" class="service-cta">Termin anfragen →</a>
+    </article>`).join('\n    ')}
+  </div>
+  ${C.weddingPackagesNote ? `<p class="section-more" style="color:var(--gray); max-width:640px; margin-left:auto; margin-right:auto;">${esc(C.weddingPackagesNote)}</p>` : ''}
+</section>`;
+}
+
 function sectionProcess() {
   const steps = C.process || [];
   return `<section id="process">
@@ -376,7 +405,7 @@ function sectionTestimonials() {
   return `<section id="testimonials">
   <div class="fade-up" style="text-align:center; max-width:600px; margin: 0 auto;">
     <p class="section-label" style="color:var(--accent)">Stimmen</p>
-    <h2 class="section-title">Was Brautpaare<br><em>sagen</em></h2>
+    <h2 class="section-title">Was Kund:innen<br><em>sagen</em></h2>
   </div>
   <div class="testimonials-grid">
     ${C.testimonials.map((t) => `<blockquote class="testimonial fade-up">
@@ -496,11 +525,10 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
 {
   const P = C.pages.preise;
   const url = SITE + '/preise/';
-  const todo = `<!-- TODO (Jamie): Hochzeitspakete ergänzen – je Paket: Name, Stunden, Leistungen, Anzahl Bilder, Preis.
-       Bis dahin steht hier nur der Einstiegspreis aus content.js (ab 300 €). -->`;
   const main = [
     pageIntro({ label: 'Preise', h1: P.h1, paragraphs: [P.intro] }),
-    sectionServices({ more: false, title: 'Alle Leistungen<br><em>&amp; Preise</em>', extra: todo }),
+    sectionPackages(),
+    sectionServices({ services: C.services.filter((x) => x.name !== 'Hochzeit'), more: false, title: 'Portraits, Paare<br><em>&amp; Events</em>' }),
     sectionFaq(C.faq.filter((f) => /Bezahlung|außerhalb|Bilder bekomme/.test(f.q))),
     sectionContact()
   ].join('\n\n');
@@ -508,7 +536,7 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
     file: 'preise/index.html', urlPath: '/preise/', priority: '0.8',
     html: layout({ urlPath: '/preise/', title: P.title, description: P.description, main,
       ld: [{ '@context': 'https://schema.org', '@graph': [
-        { ...business, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Fotografie-Leistungen', itemListElement: C.services.map((s) => offerFor(s, url)) } },
+        { ...business, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Fotografie-Leistungen', itemListElement: [...packageOffers(url), ...C.services.filter((x) => x.name !== 'Hochzeit').map((s) => offerFor(s, url))] } },
         breadcrumb('Preise', url)
       ] }] })
   });
@@ -547,7 +575,7 @@ for (const key of ['wuppertal', 'duesseldorf']) {
   const main = [
     pageIntro({ label: 'Hochzeitsfotografie · ' + city, h1: P.h1, paragraphs: P.intro }) + '\n' + todo,
     sectionGallery({ items: weddingItems.slice(0, 9), title: 'Hochzeiten<br><em>aus meiner Kamera</em>', more: true, filters: false }),
-    sectionServices({ services: [wedding], more: true, title: 'Eure Hochzeit<br><em>mit mir</em>' }),
+    sectionPackages({ title: 'Eure Hochzeit<br><em>mit mir</em>' }) + '\n<p class="section-more"><a href="/preise/" class="btn-secondary">Alle Preise im Überblick</a></p>',
     sectionProcess(),
     sectionTestimonials(),
     sectionFaq(C.faq.filter((f) => /außerhalb|kennenlernen|Bezahlung|lange dauert/.test(f.q))),

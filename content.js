@@ -179,13 +179,43 @@ window.SITE_CONTENT = {
     formspreeId: "xgogplrd"
   },
 
+  // ---------- HOCHZEITSPAKETE (/preise/ und Stadtseiten) ----------
+  weddingPackages: [
+    {
+      name: "Standesamt",
+      hours: "bis 1,5 Stunden",
+      images: "ca. 75 bearbeitete Bilder",
+      price: 300,
+      desc: "Für die standesamtliche Trauung oder eine kleine Feier im engsten Kreis.",
+      includes: ["Kostenloses Vorgespräch", "Trauung, Gratulationen & Gruppenfotos", "Kurzes Paarshooting", "Private Online-Galerie zum Download"]
+    },
+    {
+      name: "Hochzeitsreportage",
+      hours: "6 Stunden",
+      images: "300+ bearbeitete Bilder",
+      price: 1000,
+      highlight: true,
+      desc: "Der Klassiker: von den Vorbereitungen oder der Trauung bis in den Abend.",
+      includes: ["Kostenloses Vorgespräch", "Trauung, Paarshooting, Gruppenfotos & Feier", "Vorschau-Bilder nach wenigen Tagen", "Private Online-Galerie zum Download"]
+    },
+    {
+      name: "Ganzer Tag",
+      hours: "10 Stunden",
+      images: "450+ bearbeitete Bilder",
+      price: 1500,
+      desc: "Vom Getting Ready bis zur Party – ich begleite euren kompletten Tag.",
+      includes: ["Kostenloses Vorgespräch", "Getting Ready bis Party", "Vorschau-Bilder nach wenigen Tagen", "Private Online-Galerie zum Download"]
+    }
+  ],
+  weddingPackagesNote: "Jede weitere Stunde: 150 €. Anfahrt bis 30 km um Wuppertal inklusive. Ihr braucht etwas dazwischen? Schreibt mir – ich passe jedes Paket an euch an.",
+
   // ---------- UNTERSEITEN ----------
   pages: {
     preise: {
       title: "Preise Hochzeitsfotograf Wuppertal – Jamie's Lens",
-      description: "Was kostet ein Hochzeitsfotograf in Wuppertal? Hochzeit ab 300 €, Portrait 100 €, Couple/Familie 150 €, Events ab 300 €. Jetzt unverbindlich anfragen.",
+      description: "Was kostet ein Hochzeitsfotograf in Wuppertal? Standesamt 300 €, 6 Stunden mit 300+ Bildern 1.000 €, ganzer Tag 1.500 €. Jetzt unverbindlich anfragen.",
       h1: "Preise für Hochzeits- und Portraitfotografie",
-      intro: "Hier findest du alle aktuellen Preise auf einen Blick. Hochzeiten plane ich individuell mit euch – der Einstieg liegt bei 300 €. Schreib mir, was ihr vorhabt, und ich mache euch ein passendes Angebot."
+      intro: "Hier findest du alle aktuellen Preise auf einen Blick. Für Hochzeiten gibt es drei Pakete – vom Standesamt ab 300 € bis zur Ganztagesbegleitung. Schreib mir, was ihr vorhabt, und ich passe das Paket an euch an."
     },
     portfolio: {
       title: "Portfolio Hochzeitsfotografie Wuppertal & NRW – Jamie's Lens",

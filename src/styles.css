@@ -611,3 +611,5 @@ h1.hero-tag { font-family: var(--sans); font-weight: 400; }
 @media (max-width: 900px) {
   .page-intro { padding-top: calc(64px + 3rem); }
 }
+.service-card--highlight { border-color: var(--accent); }
+.service-card--highlight .service-num { color: var(--accent); }
