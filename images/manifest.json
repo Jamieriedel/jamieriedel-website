@@ -1,0 +1,308 @@
+{
+ "images/about.webp": {
+  "width": 2500,
+  "height": 3750,
+  "stem": "about",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/fotograf-jamie-lee-riedel-wuppertal.jpg": {
+  "width": 1023,
+  "height": 1537,
+  "stem": "fotograf-jamie-lee-riedel-wuppertal",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/galerie-01.jpg": {
+  "width": 1865,
+  "height": 2797,
+  "stem": "galerie-01",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-02.webp": {
+  "width": 2500,
+  "height": 3750,
+  "stem": "galerie-02",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-03.webp": {
+  "width": 1948,
+  "height": 2922,
+  "stem": "galerie-03",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-04.webp": {
+  "width": 1841,
+  "height": 2761,
+  "stem": "galerie-04",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-05.webp": {
+  "width": 2500,
+  "height": 3750,
+  "stem": "galerie-05",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-06.webp": {
+  "width": 2121,
+  "height": 3182,
+  "stem": "galerie-06",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-07.webp": {
+  "width": 2500,
+  "height": 3750,
+  "stem": "galerie-07",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-08.webp": {
+  "width": 2500,
+  "height": 3750,
+  "stem": "galerie-08",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-09.webp": {
+  "width": 1067,
+  "height": 1600,
+  "stem": "galerie-09",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/galerie-10.webp": {
+  "width": 1068,
+  "height": 1600,
+  "stem": "galerie-10",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/galerie-11.webp": {
+  "width": 1067,
+  "height": 1600,
+  "stem": "galerie-11",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/galerie-12.webp": {
+  "width": 1600,
+  "height": 1068,
+  "stem": "galerie-12",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-13.webp": {
+  "width": 1600,
+  "height": 1069,
+  "stem": "galerie-13",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/galerie-14.webp": {
+  "width": 1067,
+  "height": 1600,
+  "stem": "galerie-14",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/galerie-15.webp": {
+  "width": 1067,
+  "height": 1600,
+  "stem": "galerie-15",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/hero.webp": {
+  "width": 2500,
+  "height": 3750,
+  "stem": "hero",
+  "webp": [
+   640,
+   960,
+   1280,
+   1920
+  ],
+  "avif": [
+   640,
+   960,
+   1280,
+   1920
+  ]
+ },
+ "images/hochzeit-brautpaar-blumenstrauss.jpg": {
+  "width": 2000,
+  "height": 1333,
+  "stem": "hochzeit-brautpaar-blumenstrauss",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-brautpaar-parkbank-kuss.jpg": {
+  "width": 1335,
+  "height": 2000,
+  "stem": "hochzeit-brautpaar-parkbank-kuss",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/hochzeit-brautpaar-schloss-schwarzweiss.jpg": {
+  "width": 2000,
+  "height": 1333,
+  "stem": "hochzeit-brautpaar-schloss-schwarzweiss",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-brautpaar-schwarzweiss.jpg": {
+  "width": 2000,
+  "height": 1334,
+  "stem": "hochzeit-brautpaar-schwarzweiss",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-brautpaar-standesamt-treppen.jpg": {
+  "width": 1332,
+  "height": 2000,
+  "stem": "hochzeit-brautpaar-standesamt-treppen",
+  "webp": [
+   480,
+   960
+  ],
+  "avif": []
+ },
+ "images/hochzeit-brautpaar-zeremonie.jpg": {
+  "width": 2000,
+  "height": 2999,
+  "stem": "hochzeit-brautpaar-zeremonie",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-erster-tanz-gaeste.jpg": {
+  "width": 2000,
+  "height": 2998,
+  "stem": "hochzeit-erster-tanz-gaeste",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-gaeste-feier.jpg": {
+  "width": 2000,
+  "height": 3000,
+  "stem": "hochzeit-gaeste-feier",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-groomsmen-gruppenfoto.jpg": {
+  "width": 2000,
+  "height": 1334,
+  "stem": "hochzeit-groomsmen-gruppenfoto",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ },
+ "images/hochzeit-standesamt-trauung.jpg": {
+  "width": 2000,
+  "height": 1334,
+  "stem": "hochzeit-standesamt-trauung",
+  "webp": [
+   480,
+   960,
+   1600
+  ],
+  "avif": []
+ }
+}
