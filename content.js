@@ -150,6 +150,6 @@ window.SITE_CONTENT = {
     whatsappEnabled: true,
     whatsappNumber: "491771846741",
     whatsappGreeting: "Hey Jamie! Ich hätte Interesse an einem Shooting.",
-    formspreeId: ""
+    formspreeId: "xgogplrd"
   }
 };
