@@ -6,6 +6,8 @@
   <title>Portfolio Hochzeitsfotografie Wuppertal &amp; NRW – Jamie&#39;s Lens</title>
   <meta name="description" content="Ausgewählte Hochzeitsreportagen, Portraits und Paarshootings von Jamie&#39;s Lens aus Wuppertal – natürlich, ehrlich und ohne Standardposen." />
   <link rel="canonical" href="https://jamieriedel.com/portfolio/" />
+  
+  <meta name="theme-color" content="#FBFAF7" />
   <meta property="og:title" content="Portfolio Hochzeitsfotografie Wuppertal &amp; NRW – Jamie&#39;s Lens" />
   <meta property="og:description" content="Ausgewählte Hochzeitsreportagen, Portraits und Paarshootings von Jamie&#39;s Lens aus Wuppertal – natürlich, ehrlich und ohne Standardposen." />
   <meta property="og:type" content="website" />
@@ -86,801 +88,503 @@
   src: url('/fonts/dm-sans.woff2') format('woff2');
 }
 
+/* ============================================================
+   JAMIE'S LENS – Stylesheet
+   Prinzip: Die Fotos sind der Star. Ruhige Typografie, viel Luft,
+   eine einzige Bewegung (Hero beim Laden).
+   ============================================================ */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --white: #fafaf8;
-  --black: #111110;
-  --gray: #6b6b67;
-  --light: #f0ede8;
-  --accent: #c8a97e;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'DM Sans', sans-serif;
+  --paper: #FBFAF7;      /* Grundfläche */
+  --sand: #F2EEE7;       /* ruhige Wechselfläche */
+  --ink: #1F1C19;        /* Text, Buttons */
+  --stone: #6B655E;      /* Fließtext sekundär */
+  --line: #E6E1D9;       /* Linien */
+  --gold: #C8A97E;       /* nur dekorativ / auf Dunkel */
+  --gold-ink: #7F6139;   /* Gold für kleine Schrift auf Hell */
+  --espresso: #26211D;   /* dunkle Flächen */
+  --on-dark: #EDE7DF;
+  --on-dark-muted: #B9AFA4;
+
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --wrap: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --section: clamp(4.5rem, 10vw, 8.5rem);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
-  background: var(--white);
-  color: var(--black);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
   font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.5rem 4rem;
-  background: rgba(250,250,248,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-.nav-logo {
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+section { padding: var(--section) 0; }
+
+/* ── Typografie ── */
+h1, h2, h3 {
   font-family: var(--serif);
-  font-size: 1.4rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--black);
-  text-decoration: none;
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  color: var(--ink);
 }
-.nav-logo span { font-style: italic; color: var(--accent); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a {
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--black); }
-.nav-cta {
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--black);
-  padding: 0.65rem 1.5rem;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-}
-.nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+h2 { font-size: clamp(2.1rem, 4vw, 3.25rem); margin-bottom: 1.25rem; }
+h3 { font-size: clamp(1.45rem, 2vw, 1.75rem); margin-bottom: 0.6rem; }
+.lede { font-size: clamp(1.1rem, 1.5vw, 1.25rem); color: var(--stone); max-width: 38rem; }
+.section-head { max-width: 40rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head.center .lede { margin-left: auto; margin-right: auto; }
 
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); transition: all 0.3s; }
+/* ── Buttons & Links ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 400;
+  padding: 0.95rem 1.9rem; border: 1px solid var(--ink);
+  background: var(--ink); color: var(--paper);
+  text-decoration: none; cursor: pointer; border-radius: 2px;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.btn:hover { background: var(--espresso); border-color: var(--espresso); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+.link {
+  color: var(--ink); text-decoration: none; font-weight: 400;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  padding-bottom: 2px; transition: background-size 0.3s;
+}
+.link:hover { background-size: 0 1px; background-position: 100% 100%; }
+.actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+/* ── Navigation ── */
+.site-nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  background: rgba(251,250,247,0.94);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.nav-logo { font-family: var(--serif); font-size: 1.55rem; text-decoration: none; color: var(--ink); letter-spacing: 0.01em; }
+.nav-links { display: flex; gap: 2.25rem; list-style: none; }
+.nav-links a { font-size: 0.95rem; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--ink); }
+.nav-cta { padding: 0.6rem 1.3rem; font-size: 0.9rem; }
+.hamburger { display: none; flex-direction: column; gap: 6px; background: none; border: 0; padding: 10px; cursor: pointer; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); }
 .mobile-menu {
-  display: none;
-  position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-  background: var(--white);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  flex-direction: column;
-  padding: 1.5rem;
-  gap: 1.2rem;
-  list-style: none;
+  display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
+  background: var(--paper); border-bottom: 1px solid var(--line);
+  list-style: none; padding: 1rem var(--gutter) 1.75rem; flex-direction: column;
 }
-.mobile-menu a {
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-}
+.mobile-menu a { display: block; padding: 0.8rem 0; font-family: var(--serif); font-size: 1.5rem; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); }
 .mobile-menu.open { display: flex; }
 
-/* ── HERO ── */
-#hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 80px;
-  position: relative;
+/* ── Hero ── */
+.hero {
+  padding: 72px 0 0;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  min-height: min(100vh, 940px);
 }
 .hero-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6rem 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(2.5rem, 4vw, 4rem) var(--gutter) clamp(4rem, 7vw, 6.5rem);
+  padding-left: max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
 }
-.hero-tag {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
+.hero h1 { font-size: clamp(2.3rem, 3.15vw, 3.4rem); line-height: 1.08; margin-bottom: 1.6rem; max-width: 14ch; }
+.hero .lede { margin-bottom: 2.2rem; max-width: 29rem; font-size: clamp(1.05rem, 1.25vw, 1.15rem); }
+.hero-note { margin-top: 1.6rem; font-size: 0.92rem; color: var(--stone); display: flex; gap: 0.6rem; align-items: center; }
+.hero-note::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
+.hero-image { position: relative; overflow: hidden; background: var(--sand); }
+.hero-image picture, .hero-image img { width: 100%; height: 100%; }
+.hero-image img { object-fit: cover; object-position: 50% 30%; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-image img { animation: hero-in 1.4s cubic-bezier(.2,.7,.2,1) both; }
 }
-.hero-title {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 5vw, 5.5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 1.8rem;
-}
-.hero-title em { font-style: italic; color: var(--accent); }
-.hero-sub {
-  font-size: 1rem;
-  color: var(--gray);
-  line-height: 1.8;
-  max-width: 420px;
-  margin-bottom: 3rem;
-}
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--black);
-  padding: 1rem 2.2rem;
-  text-decoration: none;
-  transition: background 0.25s, transform 0.2s;
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-}
-.btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
-.btn-secondary {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black);
-  background: transparent;
-  border: 1px solid var(--black);
-  padding: 1rem 2.2rem;
-  text-decoration: none;
-  transition: all 0.25s;
-  display: inline-block;
-  cursor: pointer;
-}
-.btn-secondary:hover { background: var(--black); color: var(--white); }
+@keyframes hero-in { from { transform: scale(1.04); opacity: 0.6; } to { transform: none; opacity: 1; } }
 
-.hero-image {
-  position: relative;
-  overflow: hidden;
-  background: var(--light);
-}
-.hero-image img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(8%);
-  transition: transform 6s ease;
-}
-.hero-image:hover img { transform: scale(1.04); }
-.hero-scroll {
-  position: absolute; bottom: 2rem; left: 4rem;
-  display: flex; align-items: center; gap: 0.8rem;
-  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray);
-}
-.hero-scroll::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gray); }
+/* ── Seiten-Intro (Unterseiten) ── */
+.page-intro { padding-top: calc(72px + clamp(3.5rem, 8vw, 6.5rem)); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.page-intro h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.06; max-width: 16ch; margin-bottom: 1.5rem; }
+.page-intro .lede + .lede { margin-top: 1rem; }
+.page-intro .actions { margin-top: 2.4rem; }
+.crumbs { font-size: 0.9rem; color: var(--stone); margin-bottom: 1.5rem; }
+.crumbs a { color: var(--stone); }
 
-/* ── MARQUEE ── */
-.marquee-wrap {
-  overflow: hidden;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  padding: 1rem 0;
-  background: var(--light);
-}
-.marquee-track { display: flex; white-space: nowrap; animation: marquee 22s linear infinite; }
-.marquee-track span {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--gray);
-  padding: 0 2.5rem;
-}
-.marquee-track span::after { content: '·'; margin-left: 2.5rem; color: var(--accent); }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* ── Über mich ── */
+.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
+.about-image img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.about-lead { font-family: var(--serif); font-size: clamp(1.3rem, 2vw, 1.55rem); line-height: 1.45; color: var(--ink); margin-bottom: 1.5rem; }
+.about-text p:not(.about-lead) { color: var(--stone); margin-bottom: 1rem; max-width: 36rem; }
+.facts { display: flex; gap: clamp(1.5rem, 4vw, 3.5rem); margin: 2.4rem 0 2.2rem; padding-top: 1.8rem; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.facts div { display: flex; flex-direction: column; }
+.facts dt { font-family: var(--serif); font-size: 2.2rem; line-height: 1; color: var(--ink); order: 1; }
+.facts dd { font-size: 0.9rem; color: var(--stone); order: 2; margin-top: 0.4rem; max-width: 12rem; }
+.page-links { display: flex; gap: 1.25rem 2rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; }
 
-/* ── SECTION BASE ── */
-section { padding: 7rem 4rem; }
-.section-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1.15;
-  margin-bottom: 1.5rem;
-}
-.section-title em { font-style: italic; }
+/* ── Ausgewählte Arbeiten (Mosaik) ── */
+.mosaic { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(0.6rem, 1.2vw, 1rem); }
+.mosaic figure { position: relative; overflow: hidden; background: var(--sand); cursor: zoom-in; }
+.mosaic .gallery-item { margin: 0; }
+.mosaic img, .mosaic .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 0.8s cubic-bezier(.2,.7,.2,1); }
+.mosaic figure:hover img { transform: scale(1.025); }
+.mosaic figure:nth-child(6n+1) { grid-column: span 7; aspect-ratio: 4 / 5; }
+.mosaic figure:nth-child(6n+2) { grid-column: span 5; aspect-ratio: 4 / 5; align-self: end; }
+.mosaic figure:nth-child(6n+3) { grid-column: span 4; aspect-ratio: 3 / 4; }
+.mosaic figure:nth-child(6n+4) { grid-column: span 4; aspect-ratio: 3 / 4; }
+.mosaic figure:nth-child(6n+5) { grid-column: span 4; aspect-ratio: 3 / 4; }
+.mosaic figure:nth-child(6n) { grid-column: span 12; aspect-ratio: 16 / 8; }
+.section-foot { margin-top: clamp(2rem, 4vw, 3rem); display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
 
-/* ── ABOUT ── */
-#about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-.about-image { position: relative; }
-.about-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
-.about-image-accent {
-  position: absolute; top: -1.5rem; left: -1.5rem;
-  width: 60%; height: 60%;
-  border: 1px solid var(--accent);
-  z-index: -1;
-}
-.about-stats {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-  margin-top: 3rem; padding-top: 3rem;
-  border-top: 1px solid rgba(0,0,0,0.08);
-}
-.stat-num { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--accent); line-height: 1; }
-.stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 0.3rem; letter-spacing: 0.05em; }
-.about-text p { font-size: 1rem; color: var(--gray); line-height: 1.9; margin-bottom: 1.2rem; }
-
-/* ── GALLERY ── */
-#gallery { padding: 7rem 4rem; }
-.gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem; }
-.gallery-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+/* ── Portfolio (Masonry + Filter) ── */
+.gallery-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .filter-btn {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  background: transparent;
-  border: 1px solid rgba(0,0,0,0.15);
-  padding: 0.55rem 1.3rem;
-  cursor: pointer;
-  transition: all 0.25s;
+  font-family: var(--sans); font-size: 0.92rem; padding: 0.5rem 1.1rem;
+  border: 1px solid var(--line); background: transparent; color: var(--stone);
+  cursor: pointer; border-radius: 999px; transition: all 0.2s;
 }
-.filter-btn:hover { border-color: var(--black); color: var(--black); }
-.filter-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
-
+.filter-btn:hover { color: var(--ink); border-color: var(--ink); }
+.filter-btn.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .gallery-grid { columns: 3; column-gap: 1rem; }
-.gallery-item {
-  break-inside: avoid;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  background: var(--light);
-  position: relative;
-  opacity: 1;
-  transition: opacity 0.4s;
-}
+.gallery-item { break-inside: avoid; margin-bottom: 1rem; overflow: hidden; background: var(--sand); cursor: zoom-in; }
 .gallery-item.hidden { display: none; }
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.6s ease;
-  min-height: 120px;
-  object-fit: cover;
-}
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-item-overlay {
-  position: absolute; inset: 0;
-  background: rgba(17,17,16,0);
-  transition: background 0.3s;
-  display: flex; align-items: flex-end; padding: 1.2rem;
-  pointer-events: none;
-}
-.gallery-item:hover .gallery-item-overlay { background: rgba(17,17,16,0.3); }
-.gallery-item-tag {
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--white);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.gallery-item:hover .gallery-item-tag { opacity: 1; }
+.gallery-item img { width: 100%; height: auto; transition: transform 0.8s cubic-bezier(.2,.7,.2,1); }
+.gallery-item:hover img { transform: scale(1.025); }
 
 /* Lightbox */
-.lightbox {
-  display: none;
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(17,17,16,0.95);
-  align-items: center; justify-content: center;
-  padding: 2rem;
-  cursor: zoom-out;
-}
+.lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(28,25,22,0.96); align-items: center; justify-content: center; padding: 2rem; cursor: zoom-out; }
 .lightbox.open { display: flex; }
-.lightbox img { max-width: 92%; max-height: 88vh; object-fit: contain; }
-.lightbox-close {
-  position: absolute; top: 1.5rem; right: 2rem;
-  font-size: 2rem; color: var(--white);
-  background: none; border: none; cursor: pointer;
-  font-family: var(--sans); font-weight: 300;
-}
+.lightbox img { max-width: 94vw; max-height: 90vh; object-fit: contain; }
+.lightbox-close { position: absolute; top: 1rem; right: 1.25rem; font-size: 2.2rem; line-height: 1; color: var(--on-dark); background: none; border: 0; cursor: pointer; padding: 0.5rem; }
 
-/* ── SERVICES ── */
-#services { background: var(--light); }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2px;
-  margin-top: 4rem;
-}
-.service-card {
-  background: var(--white);
-  padding: 3rem 2.5rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.service-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0;
-  width: 3px; height: 0;
-  background: var(--accent);
-  transition: height 0.4s ease;
-}
-.service-card:hover::before { height: 100%; }
-.service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-.service-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--light); line-height: 1; margin-bottom: 1.5rem; }
-.service-name { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
-.service-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.7; margin-bottom: 1.8rem; }
-.service-includes { list-style: none; margin-bottom: 2rem; }
-.service-includes li {
-  font-size: 0.82rem;
-  color: var(--gray);
-  padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.service-includes li::before { content: '—'; color: var(--accent); font-size: 0.7rem; }
-.service-price { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; margin-top: auto; }
-.service-price small { font-family: var(--sans); font-size: 0.75rem; color: var(--gray); display: block; margin-top: 0.2rem; }
-.service-cta {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-  align-self: flex-start;
-}
-.service-cta:hover { color: var(--accent); border-color: var(--accent); }
+/* ── Kundenstimmen ── */
+.voices { background: var(--espresso); color: var(--on-dark); }
+.voices h2 { color: var(--on-dark); }
+.quotes { display: grid; gap: clamp(3rem, 6vw, 5rem); max-width: 54rem; margin: 0 auto; }
+.quote { padding-left: clamp(1.25rem, 3vw, 2.5rem); border-left: 1px solid rgba(200,169,126,0.45); }
+.quote p { font-family: var(--serif); font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.45; color: var(--on-dark); }
+.quote figcaption { margin-top: 1.4rem; font-size: 0.95rem; color: var(--gold); }
+.quote figcaption span { color: var(--on-dark-muted); }
 
-/* ── PROCESS ── */
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-  position: relative;
-}
-.process-step { position: relative; padding-top: 1rem; }
-.process-num {
-  font-family: var(--serif);
-  font-size: 5rem;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--accent);
-  opacity: 0.35;
-  line-height: 1;
-  margin-bottom: 1rem;
-}
-.process-step h3 {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 0.8rem;
-}
-.process-step p { font-size: 0.92rem; color: var(--gray); line-height: 1.8; }
-.process-arrow {
-  position: absolute;
-  top: 2.2rem; right: -2.2rem;
-  color: var(--accent);
-  font-size: 1.3rem;
-  opacity: 0.5;
-}
-@media (max-width: 900px) { .process-arrow { display: none; } }
+/* ── Pakete & Preise ── */
+.packages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.package { padding: 2.5rem clamp(1.25rem, 2.5vw, 2.5rem); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; }
+.package + .package { border-left: 1px solid var(--line); }
+.package--featured { background: var(--sand); }
+.package-tag { font-size: 0.85rem; color: var(--gold-ink); margin-bottom: 0.9rem; min-height: 1.4em; }
+.package h3 { margin-bottom: 0.4rem; }
+.package-meta { color: var(--stone); font-size: 0.95rem; margin-bottom: 1.4rem; }
+.package-price { font-family: var(--serif); font-size: 2.6rem; line-height: 1; margin-bottom: 1.6rem; }
+.package-desc { color: var(--stone); margin-bottom: 1.4rem; }
+.package ul { list-style: none; margin-bottom: 2rem; flex: 1; }
+.package li { padding: 0.55rem 0 0.55rem 1.4rem; border-top: 1px solid var(--line); font-size: 0.97rem; position: relative; }
+.package li::before { content: ''; position: absolute; left: 0; top: 1.25em; width: 0.6rem; height: 1px; background: var(--gold); }
+.package .btn { align-self: flex-start; }
+.packages-note { margin-top: 1.8rem; color: var(--stone); max-width: 46rem; }
+.also { margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: 2rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2rem; }
+.also h3 { margin: 0; }
+.also ul { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.also strong { display: block; font-weight: 400; color: var(--ink); }
+.also span { color: var(--stone); font-size: 0.95rem; }
+
+/* Leistungskarten (Preisseite) */
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); }
+.service { border: 1px solid var(--line); padding: 2rem; display: flex; flex-direction: column; background: var(--paper); }
+.service p { color: var(--stone); margin-bottom: 1.2rem; }
+.service ul { list-style: none; margin-bottom: 1.6rem; flex: 1; }
+.service li { font-size: 0.95rem; padding: 0.35rem 0; color: var(--ink); }
+.service-price { font-family: var(--serif); font-size: 2rem; line-height: 1.1; }
+.service-price small { display: block; font-family: var(--sans); font-size: 0.85rem; color: var(--stone); margin-top: 0.3rem; }
+.service .link { margin-top: 1.4rem; align-self: flex-start; }
+
+/* ── Ablauf ── */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); counter-reset: step; list-style: none; }
+.steps li { counter-increment: step; padding-top: 1.4rem; border-top: 1px solid var(--ink); }
+.steps li::before { content: counter(step); display: block; font-family: var(--serif); font-size: 1.1rem; color: var(--gold-ink); margin-bottom: 0.8rem; }
+.steps p { color: var(--stone); }
 
 /* ── FAQ ── */
-#faq { background: var(--light); }
-.faq-list { max-width: 760px; margin: 3rem auto 0; }
-.faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item h3 { margin: 0; font-size: inherit; font-family: inherit; }
 .faq-q {
-  width: 100%;
-  background: none; border: none;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--black);
-  text-align: left;
-  padding: 1.5rem 3rem 1.5rem 0;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.2s;
+  width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
+  font-family: var(--serif); font-size: clamp(1.2rem, 1.8vw, 1.4rem); color: var(--ink);
+  padding: 1.3rem 2.5rem 1.3rem 0; position: relative; line-height: 1.35;
 }
-.faq-q:hover { color: var(--accent); }
-.faq-q::after {
-  content: '+';
-  position: absolute; right: 0.5rem; top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--sans);
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--accent);
-  transition: transform 0.3s;
-}
-.faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.faq-a p {
-  font-size: 0.92rem;
-  color: var(--gray);
-  line-height: 1.85;
-  padding: 0 2rem 1.6rem 0;
-}
+.faq-q::after { content: '+'; position: absolute; right: 0.25rem; top: 1.15rem; font-family: var(--sans); font-weight: 300; font-size: 1.5rem; color: var(--gold-ink); transition: transform 0.3s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { overflow: hidden; }
+.js .faq-a { max-height: 0; transition: max-height 0.35s ease; }
+.faq-a p { color: var(--stone); padding: 0 2.5rem 1.4rem 0; max-width: 40rem; }
 
-/* ── WHATSAPP BUTTON ── */
+/* ── Kontakt ── */
+.contact { background: var(--sand); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2.5rem, 7vw, 7rem); }
+.contact-info p { color: var(--stone); margin-bottom: 1rem; max-width: 30rem; }
+.contact-list { list-style: none; margin-top: 2rem; border-top: 1px solid #DDD6CB; }
+.contact-list li { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid #DDD6CB; font-size: 0.97rem; }
+.contact-list span { color: var(--stone); }
+.contact-list a { color: var(--ink); text-decoration: none; }
+.contact-list a:hover { text-decoration: underline; }
+.contact-form { display: grid; gap: 1.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-group label { font-size: 0.9rem; color: var(--stone); }
+.form-group input, .form-group select, .form-group textarea {
+  font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--ink);
+  background: var(--paper); border: 1px solid #DDD6CB; border-radius: 2px;
+  padding: 0.85rem 1rem; outline: none; transition: border-color 0.2s; width: 100%;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--ink); }
+.form-group textarea { min-height: 150px; resize: vertical; }
+.form-submit { justify-self: start; }
+.form-submit:disabled { opacity: 0.6; cursor: wait; }
+.form-status { display: none; font-size: 0.97rem; padding: 1rem 1.2rem; border-left: 2px solid currentColor; background: var(--paper); }
+.form-status.ok { display: block; color: #3F6B4C; }
+.form-status.err { display: block; color: #9B2C2C; }
+.form-hint { font-size: 0.9rem; color: var(--stone); }
+.form-hint a { color: var(--ink); }
+
+/* ── Rechtliches ── */
+.legal-body { max-width: 44rem; }
+.legal-body h2 { font-size: clamp(1.4rem, 2vw, 1.7rem); margin: 2.4rem 0 0.7rem; }
+.legal-body p, .legal-body li { color: var(--stone); margin-bottom: 0.8rem; }
+.legal-body ul { padding-left: 1.2rem; margin-bottom: 1rem; }
+.legal-body a { color: var(--ink); overflow-wrap: anywhere; }
+
+/* ── Footer ── */
+.site-footer { background: var(--espresso); color: var(--on-dark-muted); padding: clamp(3.5rem, 7vw, 5rem) 0 2.5rem; }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(237,231,223,0.12); }
+.footer-grid .footer-logo { font-family: var(--serif); font-size: 1.9rem; color: var(--on-dark); text-decoration: none; }
+.footer-grid p { margin-top: 0.8rem; max-width: 22rem; font-size: 0.95rem; }
+.footer-grid h2 { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; color: var(--on-dark); margin-bottom: 1rem; }
+.footer-grid ul { list-style: none; }
+.footer-grid li { margin-bottom: 0.55rem; }
+.footer-grid a { color: var(--on-dark-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+.footer-grid a:hover { color: var(--on-dark); }
+.footer-bottom { padding-top: 1.8rem; font-size: 0.85rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+/* ── WhatsApp ── */
 .wa-btn {
-  position: fixed;
-  bottom: 1.6rem; right: 1.6rem;
-  z-index: 90;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: #25d366;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-  transition: transform 0.25s, box-shadow 0.25s;
-  text-decoration: none;
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 90;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--ink); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(31,28,25,0.22); transition: background 0.25s;
 }
-.wa-btn:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
-.wa-btn svg { width: 30px; height: 30px; fill: #fff; }
-.wa-tooltip {
-  position: fixed;
-  bottom: 2.4rem; right: 5.6rem;
-  z-index: 90;
-  background: var(--black); color: var(--white);
-  font-size: 0.72rem; letter-spacing: 0.05em;
-  padding: 0.5rem 0.9rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s;
-  white-space: nowrap;
-}
-.wa-btn:hover + .wa-tooltip { opacity: 1; }
+.wa-btn:hover { background: #1E9E4F; }
+.wa-btn svg { width: 24px; height: 24px; fill: var(--paper); }
 
-/* ── TESTIMONIALS ── */
-#testimonials { background: var(--black); color: var(--white); }
-#testimonials .section-title { color: var(--white); }
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-}
-.testimonial { padding: 2.5rem; border: 1px solid rgba(255,255,255,0.08); position: relative; }
-.testimonial::before {
-  content: '"';
-  font-family: var(--serif);
-  font-size: 6rem;
-  color: var(--accent);
-  position: absolute; top: -1rem; left: 2rem;
-  line-height: 1; opacity: 0.4;
-}
-.testimonial-text { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 1.8rem; padding-top: 1.5rem; }
-.testimonial-name { font-family: var(--serif); font-size: 1rem; font-style: italic; }
-.testimonial-event { font-size: 0.75rem; color: var(--accent); margin-top: 0.2rem; letter-spacing: 0.05em; }
-.testimonials-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 3rem; }
-
-/* ── CONTACT ── */
-#contact { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-.contact-info p { font-size: 1rem; color: var(--gray); line-height: 1.8; margin-bottom: 2.5rem; }
-.contact-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
-.contact-detail-icon {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(0,0,0,0.12);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  font-size: 0.85rem;
-}
-.contact-detail-text { font-size: 0.9rem; color: var(--gray); line-height: 1.5; }
-.contact-detail-text strong { display: block; color: var(--black); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
-.contact-detail-text a { color: var(--gray); text-decoration: none; }
-.contact-detail-text a:hover { color: var(--black); }
-
-.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-group label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: var(--black);
-  background: var(--white);
-  border: 1px solid rgba(0,0,0,0.15);
-  padding: 0.9rem 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-  width: 100%;
-  -webkit-appearance: none;
-  border-radius: 0;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus { border-color: var(--black); }
-.form-group textarea { resize: vertical; min-height: 130px; }
-.form-submit {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--black);
-  border: none;
-  padding: 1rem 2.5rem;
-  cursor: pointer;
-  transition: background 0.25s, transform 0.2s;
-  align-self: flex-start;
-}
-.form-submit:hover { background: var(--accent); transform: translateY(-2px); }
-.form-submit:disabled { opacity: 0.5; cursor: wait; }
-.form-status { font-size: 0.85rem; margin-top: 0.5rem; display: none; }
-.form-status.ok { color: #4a7c59; display: block; }
-.form-status.err { color: #a33; display: block; }
-.form-hint { font-size: 0.75rem; color: var(--gray); }
-.form-hint a { color: var(--accent); }
-
-/* ── FOOTER ── */
-footer {
-  background: var(--black);
-  color: var(--white);
-  padding: 4rem;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-}
-.footer-left p { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
-.footer-logo { font-family: var(--serif); font-size: 1.6rem; color: var(--white); text-align: center; }
-.footer-logo span { font-style: italic; color: var(--accent); }
-.footer-right { display: flex; gap: 1.5rem; justify-content: flex-end; flex-wrap: wrap; }
-.footer-right a { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
-.footer-right a:hover { color: var(--white); }
-
-/* ── MOBILE ── */
-@media (max-width: 900px) {
-  nav { padding: 1.2rem 1.5rem; }
+/* ── Responsiv ── */
+@media (max-width: 1000px) {
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
-
-  #hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-text { padding: 5rem 1.5rem 3rem; }
-  .hero-image { height: 62vw; }
-  .hero-scroll { display: none; }
-
-  section { padding: 4rem 1.5rem; }
-  #about { grid-template-columns: 1fr; gap: 3rem; }
-  .about-image-accent { display: none; }
-  #gallery { padding: 4rem 1.5rem; }
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-text { padding: 3rem var(--gutter) 2.5rem; }
+  .hero-image { aspect-ratio: 4 / 5; max-height: 80vh; }
+  .about, .faq, .contact-grid { grid-template-columns: 1fr; }
+  .about-image { max-width: 30rem; }
+  .packages { grid-template-columns: 1fr; }
+  .package + .package { border-left: 0; }
+  .services { grid-template-columns: 1fr 1fr; }
+  .also { grid-template-columns: 1fr; }
   .gallery-grid { columns: 2; }
-  #contact { grid-template-columns: 1fr; gap: 3rem; }
-  .form-row { grid-template-columns: 1fr; }
-  footer { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-  .footer-right { justify-content: center; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > div:first-child { grid-column: 1 / -1; }
 }
-@media (max-width: 520px) {
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .site-nav .wrap { height: 64px; }
+  .mobile-menu { top: 64px; }
+  .hero { padding-top: 64px; }
+  .mosaic { grid-template-columns: 1fr 1fr; }
+  .mosaic figure:nth-child(n) { grid-column: span 1; aspect-ratio: 3 / 4; align-self: auto; }
+  .mosaic figure:nth-child(3n+1) { grid-column: span 2; aspect-ratio: 4 / 5; }
+  .services, .steps, .also ul, .form-row { grid-template-columns: 1fr; }
   .gallery-grid { columns: 1; }
+  .contact-list li { grid-template-columns: 1fr; gap: 0.1rem; }
+  .facts dt { font-size: 1.9rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid a, .contact-list a, .form-hint a { overflow-wrap: anywhere; }
 }
-
-/* ── ANIMATIONS ── */
-.js .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.js .fade-up.visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .js .fade-up { opacity: 1; transform: none; transition: none; }
-  .marquee-track { animation: none; }
-}
-
-/* ── ERGÄNZUNGEN (SEO-Relaunch) ── */
-h1.hero-tag { font-family: var(--sans); font-weight: 400; }
-.hero-title { display: block; }
-.about-lead { font-size: 1.05rem; color: var(--black); line-height: 1.8; margin-bottom: 1.2rem; }
-.section-more { text-align: center; margin-top: 3rem; }
-.page-intro { padding-top: calc(80px + 5rem); max-width: 860px; margin: 0 auto; }
-.page-intro h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.4rem, 4.5vw, 4rem); line-height: 1.15; margin-bottom: 1.5rem; }
-.page-intro h1 em { font-style: italic; color: var(--accent); }
-.page-intro p { color: var(--gray); line-height: 1.8; margin-bottom: 1rem; }
-.page-intro .hero-actions { margin-top: 2rem; }
-.page-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
-.page-links a { color: var(--gray); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
-.page-links a:hover { color: var(--black); }
-.contact-cta { text-align: center; background: var(--light); }
-.contact-cta p { color: var(--gray); max-width: 560px; margin: 0 auto 2rem; line-height: 1.8; }
-.wa-btn { display: flex; }
-@media (max-width: 900px) {
-  .page-intro { padding-top: calc(64px + 3rem); }
-}
-.service-card--highlight { border-color: var(--accent); }
-.service-card--highlight .service-num { color: var(--accent); }
   </style>
 </head>
 <body>
 <!-- Diese Datei wird automatisch von build.mjs erzeugt. Nicht von Hand bearbeiten. -->
 
-<nav>
-  <a href="/" class="nav-logo">Jamie's <span>Lens</span></a>
-  <ul class="nav-links">
-    <li><a href="/#about">Über mich</a></li>
-    <li><a href="/portfolio/">Portfolio</a></li>
-    <li><a href="/preise/">Preise</a></li>
-    <li><a href="/#contact">Kontakt</a></li>
-  </ul>
-  <a href="/#contact" class="nav-cta">Anfragen</a>
-  <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<header class="site-nav">
+  <div class="wrap">
+    <a href="/" class="nav-logo">Jamie&#39;s Lens</a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav-links">
+        <li><a href="/#about">Über mich</a></li>
+        <li><a href="/portfolio/" aria-current="page">Portfolio</a></li>
+        <li><a href="/preise/">Preise</a></li>
+        <li><a href="/#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a href="/#contact" class="btn nav-cta">Anfragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 <ul class="mobile-menu" id="mobileMenu">
   <li><a href="/#about">Über mich</a></li>
-  <li><a href="/portfolio/">Portfolio</a></li>
+  <li><a href="/portfolio/" aria-current="page">Portfolio</a></li>
   <li><a href="/preise/">Preise</a></li>
   <li><a href="/#contact">Kontakt</a></li>
+  <li><a href="/#contact">Anfrage senden</a></li>
 </ul>
 
 <main>
 <section class="page-intro">
-  <p class="section-label">Portfolio</p>
-  <h1>Portfolio: Hochzeiten und Portraits</h1>
-  <p>Eine Auswahl meiner Arbeiten – Hochzeiten in Wuppertal und NRW, dazu Portrait- und Paarshootings. Über die Filter kannst du nach Kategorie sortieren.</p>
-  
-</section>
-
-<section id="gallery">
-  <div class="gallery-header fade-up">
-    <div>
-      <p class="section-label">Portfolio</p>
-      <h2 class="section-title">Alle<br><em>Arbeiten</em></h2>
-    </div>
-    <a href="#contact" class="btn-secondary">Anfrage stellen</a>
-  </div>
-  <div class="gallery-filters" id="galleryFilters"><button type="button" class="filter-btn active" data-filter="Alle">Alle</button><button type="button" class="filter-btn" data-filter="Hochzeit">Hochzeit</button><button type="button" class="filter-btn" data-filter="Portrait">Portrait</button></div>
-  <div class="gallery-grid" id="galleryGrid">
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-standesamt-treppen-960.webp">
-      <img src="/images/r/hochzeit-brautpaar-standesamt-treppen-960.webp" srcset="/images/r/hochzeit-brautpaar-standesamt-treppen-480.webp 480w, /images/r/hochzeit-brautpaar-standesamt-treppen-960.webp 960w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="1332" height="2000" alt="Brautpaar verlässt Hand in Hand das Standesamt über die Treppe" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-parkbank-kuss-960.webp">
-      <img src="/images/r/hochzeit-brautpaar-parkbank-kuss-960.webp" srcset="/images/r/hochzeit-brautpaar-parkbank-kuss-480.webp 480w, /images/r/hochzeit-brautpaar-parkbank-kuss-960.webp 960w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="1335" height="2000" alt="Brautpaar sitzt auf einer Parkbank und schaut sich verliebt an" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-erster-tanz-gaeste-1600.webp">
-      <img src="/images/r/hochzeit-erster-tanz-gaeste-960.webp" srcset="/images/r/hochzeit-erster-tanz-gaeste-480.webp 480w, /images/r/hochzeit-erster-tanz-gaeste-960.webp 960w, /images/r/hochzeit-erster-tanz-gaeste-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="2998" alt="Bräutigam im weißen Sakko beim ersten Tanz mit der Braut, Gäste schauen zu" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-standesamt-trauung-1600.webp">
-      <img src="/images/r/hochzeit-standesamt-trauung-960.webp" srcset="/images/r/hochzeit-standesamt-trauung-480.webp 480w, /images/r/hochzeit-standesamt-trauung-960.webp 960w, /images/r/hochzeit-standesamt-trauung-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="1334" alt="Brautpaar lacht bei der Trauung im Standesamt, umgeben von Gästen" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-01-1600.webp">
-      <img src="/images/r/galerie-01-960.webp" srcset="/images/r/galerie-01-480.webp 480w, /images/r/galerie-01-960.webp 960w, /images/r/galerie-01-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="1865" height="2797" alt="Nahaufnahme einer Frau mit weißer Blüte im Haar und silbernem Ohrring" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Portrait</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-zeremonie-1600.webp">
-      <img src="/images/r/hochzeit-brautpaar-zeremonie-960.webp" srcset="/images/r/hochzeit-brautpaar-zeremonie-480.webp 480w, /images/r/hochzeit-brautpaar-zeremonie-960.webp 960w, /images/r/hochzeit-brautpaar-zeremonie-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="2999" alt="Lachendes Brautpaar bei einer freien Trauung, die Braut hält einen Blumenstrauß" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-groomsmen-gruppenfoto-1600.webp">
-      <img src="/images/r/hochzeit-groomsmen-gruppenfoto-960.webp" srcset="/images/r/hochzeit-groomsmen-gruppenfoto-480.webp 480w, /images/r/hochzeit-groomsmen-gruppenfoto-960.webp 960w, /images/r/hochzeit-groomsmen-gruppenfoto-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="1334" alt="Bräutigam im weißen Sakko mit seinen Freunden in schwarzen Anzügen und Sonnenbrillen" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-02-1600.webp">
-      <img src="/images/r/galerie-02-960.webp" srcset="/images/r/galerie-02-480.webp 480w, /images/r/galerie-02-960.webp 960w, /images/r/galerie-02-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2500" height="3750" alt="Tätowierter Mann verdeckt ein Auge mit einem Blatt, Portrait zwischen großen grünen Pflanzen" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Portrait</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-gaeste-feier-1600.webp">
-      <img src="/images/r/hochzeit-gaeste-feier-960.webp" srcset="/images/r/hochzeit-gaeste-feier-480.webp 480w, /images/r/hochzeit-gaeste-feier-960.webp 960w, /images/r/hochzeit-gaeste-feier-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="3000" alt="Zwei Hochzeitsgäste in gemusterten Hemden jubeln in die Kamera" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-schwarzweiss-1600.webp">
-      <img src="/images/r/hochzeit-brautpaar-schwarzweiss-960.webp" srcset="/images/r/hochzeit-brautpaar-schwarzweiss-480.webp 480w, /images/r/hochzeit-brautpaar-schwarzweiss-960.webp 960w, /images/r/hochzeit-brautpaar-schwarzweiss-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="1334" alt="Schwarzweißfoto: Die Braut streicht dem Bräutigam zärtlich über das Gesicht" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-04-1600.webp">
-      <img src="/images/r/galerie-04-960.webp" srcset="/images/r/galerie-04-480.webp 480w, /images/r/galerie-04-960.webp 960w, /images/r/galerie-04-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="1841" height="2761" alt="Frau hält zwei brennende Schwerter über dem Kopf auf einer Wiese unter dunklem Himmel" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Portrait</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/galerie-03-1600.webp">
-      <img src="/images/r/galerie-03-960.webp" srcset="/images/r/galerie-03-480.webp 480w, /images/r/galerie-03-960.webp 960w, /images/r/galerie-03-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="1948" height="2922" alt="Bräutigam küsst die Stirn der Braut, ihre Hand mit Ehering liegt auf seiner Brust" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-schloss-schwarzweiss-1600.webp">
-      <img src="/images/r/hochzeit-brautpaar-schloss-schwarzweiss-960.webp" srcset="/images/r/hochzeit-brautpaar-schloss-schwarzweiss-480.webp 480w, /images/r/hochzeit-brautpaar-schloss-schwarzweiss-960.webp 960w, /images/r/hochzeit-brautpaar-schloss-schwarzweiss-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2000" height="1333" alt="Schwarzweißfoto: Brautpaar hält sich an den Händen vor einem Schloss am Wasser" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-05-1600.webp">
-      <img src="/images/r/galerie-05-960.webp" srcset="/images/r/galerie-05-480.webp 480w, /images/r/galerie-05-960.webp 960w, /images/r/galerie-05-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2500" height="3750" alt="Frau mit platinblonden Haaren liegt auf einem Bett und hält ein Buch über sich" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Portrait</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/galerie-06-1600.webp">
-      <img src="/images/r/galerie-06-960.webp" srcset="/images/r/galerie-06-480.webp 480w, /images/r/galerie-06-960.webp 960w, /images/r/galerie-06-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2121" height="3182" alt="Brautpaar küsst sich, Freunde jubeln ausgelassen um sie herum" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-07-1600.webp">
-      <img src="/images/r/galerie-07-960.webp" srcset="/images/r/galerie-07-480.webp 480w, /images/r/galerie-07-960.webp 960w, /images/r/galerie-07-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2500" height="3750" alt="Blonde Frau liegt kopfüber auf einem Ledersofa und liest eine Zeitschrift" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Portrait</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-08-1600.webp">
-      <img src="/images/r/galerie-08-960.webp" srcset="/images/r/galerie-08-480.webp 480w, /images/r/galerie-08-960.webp 960w, /images/r/galerie-08-1600.webp 1600w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="2500" height="3750" alt="Frau mit langen Zöpfen posiert sitzend zwischen zwei blauen Laternen" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Portrait</span></div>
-    </figure>
-    <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/galerie-09-960.webp">
-      <img src="/images/r/galerie-09-960.webp" srcset="/images/r/galerie-09-480.webp 480w, /images/r/galerie-09-960.webp 960w" sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw" width="1067" height="1600" alt="Brautpaar schreitet Hand in Hand die Treppe des Standesamts hinunter" loading="lazy" decoding="async" />
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">Hochzeit</span></div>
-    </figure>
-  </div>
-  
-</section>
-
-<section id="testimonials">
-  <div class="fade-up" style="text-align:center; max-width:600px; margin: 0 auto;">
-    <p class="section-label" style="color:var(--accent)">Stimmen</p>
-    <h2 class="section-title">Was Kund:innen<br><em>sagen</em></h2>
-  </div>
-  <div class="testimonials-grid">
-    <blockquote class="testimonial fade-up">
-      <p class="testimonial-text">Ein herausragender Fotograf und gleichzeitig ein Mensch, dem ich vollkommen vertrauen konnte. Er hat den schönsten Tag meines Lebens mit wunderschönen, authentischen Bildern für die Ewigkeit festgehalten. Absolute Empfehlung!</p>
-      <div class="testimonial-name">Araz &amp; Elnara</div>
-      <div class="testimonial-event">Hochzeit</div>
-    </blockquote>
-    <blockquote class="testimonial fade-up">
-      <p class="testimonial-text">Wir hatten das Vergnügen, Jamie als Fotografen für unsere Hochzeit zu haben. Er hat den für uns wichtigsten und schönsten Tag perfekt eingefangen, vom First-Look-Shooting, dem Standesamt bis hin zur Feier! Durch seine sympathische und professionelle Art, die auch den Gästen in Erinnerung geblieben ist, war er an diesem Tag nicht nur Fotograf, sondern ein Teil der Hochzeitsgemeinschaft. Das Ergebnis und die Bilder sprechen für sich. Danke, dass du unseren besonderen Tag begleitet hast und die besonderen Momente festgehalten hast!</p>
-      <div class="testimonial-name">Emmanuel &amp; Sarah</div>
-      <div class="testimonial-event">Hochzeit</div>
-    </blockquote>
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Startseite</a> / Portfolio</p>
+    <h1>Portfolio: Hochzeiten und Portraits</h1>
+    <p class="lede">Eine Auswahl meiner Arbeiten – Hochzeiten in Wuppertal und NRW, dazu Portrait- und Paarshootings. Über die Filter kannst du nach Kategorie sortieren.</p>
+    
   </div>
 </section>
 
-<section id="contact">
-  <div class="contact-info fade-up">
-    <p class="section-label">Kontakt</p>
-    <h2 class="section-title">Lass uns<br><em>reden</em></h2>
-    <p>Du hast Interesse oder einfach eine Frage? Schreib mir gerne. Egal ob du schon einen festen Termin im Kopf hast oder erstmal nur schauen willst, was möglich ist. Ich freu mich auf deine Nachricht.</p>
-    <p>Ich melde mich innerhalb von 24 Stunden bei dir.</p>
-    <div>
-      <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">✉</div><div class="contact-detail-text"><strong>E-Mail</strong><a href="mailto:jamie.lee.riedel@gmail.com">jamie.lee.riedel@gmail.com</a></div></div>
-      <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">☎</div><div class="contact-detail-text"><strong>Telefon / WhatsApp</strong><a href="tel:+491771846741">+49 1771 846741</a></div></div>
-      <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">📍</div><div class="contact-detail-text"><strong>Standort</strong>Wuppertal · NRW · deutschlandweit</div></div>
-      <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">◎</div><div class="contact-detail-text"><strong>Instagram</strong><a href="https://instagram.com/jamieriedel" target="_blank" rel="noopener">@jamieriedel</a></div></div>
+<section id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="gallery-filters" role="group" aria-label="Nach Kategorie filtern"><button type="button" class="filter-btn active" data-filter="Alle" aria-pressed="true">Alle</button><button type="button" class="filter-btn" data-filter="Hochzeit" aria-pressed="false">Hochzeit</button><button type="button" class="filter-btn" data-filter="Portrait" aria-pressed="false">Portrait</button></div>
+    <div class="gallery-grid">
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-standesamt-treppen-960.webp">
+        <img src="/images/r/hochzeit-brautpaar-standesamt-treppen-960.webp" srcset="/images/r/hochzeit-brautpaar-standesamt-treppen-480.webp 480w, /images/r/hochzeit-brautpaar-standesamt-treppen-960.webp 960w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="1332" height="2000" alt="Brautpaar verlässt Hand in Hand das Standesamt über die Treppe" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-parkbank-kuss-960.webp">
+        <img src="/images/r/hochzeit-brautpaar-parkbank-kuss-960.webp" srcset="/images/r/hochzeit-brautpaar-parkbank-kuss-480.webp 480w, /images/r/hochzeit-brautpaar-parkbank-kuss-960.webp 960w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="1335" height="2000" alt="Brautpaar sitzt auf einer Parkbank und schaut sich verliebt an" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-erster-tanz-gaeste-1600.webp">
+        <img src="/images/r/hochzeit-erster-tanz-gaeste-960.webp" srcset="/images/r/hochzeit-erster-tanz-gaeste-480.webp 480w, /images/r/hochzeit-erster-tanz-gaeste-960.webp 960w, /images/r/hochzeit-erster-tanz-gaeste-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="2998" alt="Bräutigam im weißen Sakko beim ersten Tanz mit der Braut, Gäste schauen zu" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-standesamt-trauung-1600.webp">
+        <img src="/images/r/hochzeit-standesamt-trauung-960.webp" srcset="/images/r/hochzeit-standesamt-trauung-480.webp 480w, /images/r/hochzeit-standesamt-trauung-960.webp 960w, /images/r/hochzeit-standesamt-trauung-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="1334" alt="Brautpaar lacht bei der Trauung im Standesamt, umgeben von Gästen" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-01-1600.webp">
+        <img src="/images/r/galerie-01-960.webp" srcset="/images/r/galerie-01-480.webp 480w, /images/r/galerie-01-960.webp 960w, /images/r/galerie-01-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="1865" height="2797" alt="Nahaufnahme einer Frau mit weißer Blüte im Haar und silbernem Ohrring" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-zeremonie-1600.webp">
+        <img src="/images/r/hochzeit-brautpaar-zeremonie-960.webp" srcset="/images/r/hochzeit-brautpaar-zeremonie-480.webp 480w, /images/r/hochzeit-brautpaar-zeremonie-960.webp 960w, /images/r/hochzeit-brautpaar-zeremonie-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="2999" alt="Lachendes Brautpaar bei einer freien Trauung, die Braut hält einen Blumenstrauß" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-groomsmen-gruppenfoto-1600.webp">
+        <img src="/images/r/hochzeit-groomsmen-gruppenfoto-960.webp" srcset="/images/r/hochzeit-groomsmen-gruppenfoto-480.webp 480w, /images/r/hochzeit-groomsmen-gruppenfoto-960.webp 960w, /images/r/hochzeit-groomsmen-gruppenfoto-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="1334" alt="Bräutigam im weißen Sakko mit seinen Freunden in schwarzen Anzügen und Sonnenbrillen" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-02-1600.webp">
+        <img src="/images/r/galerie-02-960.webp" srcset="/images/r/galerie-02-480.webp 480w, /images/r/galerie-02-960.webp 960w, /images/r/galerie-02-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2500" height="3750" alt="Tätowierter Mann verdeckt ein Auge mit einem Blatt, Portrait zwischen großen grünen Pflanzen" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-gaeste-feier-1600.webp">
+        <img src="/images/r/hochzeit-gaeste-feier-960.webp" srcset="/images/r/hochzeit-gaeste-feier-480.webp 480w, /images/r/hochzeit-gaeste-feier-960.webp 960w, /images/r/hochzeit-gaeste-feier-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="3000" alt="Zwei Hochzeitsgäste in gemusterten Hemden jubeln in die Kamera" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-schwarzweiss-1600.webp">
+        <img src="/images/r/hochzeit-brautpaar-schwarzweiss-960.webp" srcset="/images/r/hochzeit-brautpaar-schwarzweiss-480.webp 480w, /images/r/hochzeit-brautpaar-schwarzweiss-960.webp 960w, /images/r/hochzeit-brautpaar-schwarzweiss-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="1334" alt="Schwarzweißfoto: Die Braut streicht dem Bräutigam zärtlich über das Gesicht" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-04-1600.webp">
+        <img src="/images/r/galerie-04-960.webp" srcset="/images/r/galerie-04-480.webp 480w, /images/r/galerie-04-960.webp 960w, /images/r/galerie-04-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="1841" height="2761" alt="Frau hält zwei brennende Schwerter über dem Kopf auf einer Wiese unter dunklem Himmel" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/galerie-03-1600.webp">
+        <img src="/images/r/galerie-03-960.webp" srcset="/images/r/galerie-03-480.webp 480w, /images/r/galerie-03-960.webp 960w, /images/r/galerie-03-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="1948" height="2922" alt="Bräutigam küsst die Stirn der Braut, ihre Hand mit Ehering liegt auf seiner Brust" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/hochzeit-brautpaar-schloss-schwarzweiss-1600.webp">
+        <img src="/images/r/hochzeit-brautpaar-schloss-schwarzweiss-960.webp" srcset="/images/r/hochzeit-brautpaar-schloss-schwarzweiss-480.webp 480w, /images/r/hochzeit-brautpaar-schloss-schwarzweiss-960.webp 960w, /images/r/hochzeit-brautpaar-schloss-schwarzweiss-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2000" height="1333" alt="Schwarzweißfoto: Brautpaar hält sich an den Händen vor einem Schloss am Wasser" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-05-1600.webp">
+        <img src="/images/r/galerie-05-960.webp" srcset="/images/r/galerie-05-480.webp 480w, /images/r/galerie-05-960.webp 960w, /images/r/galerie-05-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2500" height="3750" alt="Frau mit platinblonden Haaren liegt auf einem Bett und hält ein Buch über sich" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/galerie-06-1600.webp">
+        <img src="/images/r/galerie-06-960.webp" srcset="/images/r/galerie-06-480.webp 480w, /images/r/galerie-06-960.webp 960w, /images/r/galerie-06-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2121" height="3182" alt="Brautpaar küsst sich, Freunde jubeln ausgelassen um sie herum" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-07-1600.webp">
+        <img src="/images/r/galerie-07-960.webp" srcset="/images/r/galerie-07-480.webp 480w, /images/r/galerie-07-960.webp 960w, /images/r/galerie-07-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2500" height="3750" alt="Blonde Frau liegt kopfüber auf einem Ledersofa und liest eine Zeitschrift" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Portrait" data-full="/images/r/galerie-08-1600.webp">
+        <img src="/images/r/galerie-08-960.webp" srcset="/images/r/galerie-08-480.webp 480w, /images/r/galerie-08-960.webp 960w, /images/r/galerie-08-1600.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="2500" height="3750" alt="Frau mit langen Zöpfen posiert sitzend zwischen zwei blauen Laternen" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="gallery-item" data-category="Hochzeit" data-full="/images/r/galerie-09-960.webp">
+        <img src="/images/r/galerie-09-960.webp" srcset="/images/r/galerie-09-480.webp 480w, /images/r/galerie-09-960.webp 960w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" width="1067" height="1600" alt="Brautpaar schreitet Hand in Hand die Treppe des Standesamts hinunter" loading="lazy" decoding="async" />
+      </figure>
     </div>
   </div>
+</section>
 
-  <div class="fade-up">
+<section id="testimonials" class="voices">
+  <div class="wrap">
+    <div class="section-head center">
+      <h2>Was Kund:innen sagen</h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote">
+        <blockquote><p>Ein herausragender Fotograf und gleichzeitig ein Mensch, dem ich vollkommen vertrauen konnte. Er hat den schönsten Tag meines Lebens mit wunderschönen, authentischen Bildern für die Ewigkeit festgehalten. Absolute Empfehlung!</p></blockquote>
+        <figcaption>Araz &amp; Elnara <span>· Hochzeit</span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote><p>Wir hatten das Vergnügen, Jamie als Fotografen für unsere Hochzeit zu haben. Er hat den für uns wichtigsten und schönsten Tag perfekt eingefangen, vom First-Look-Shooting, dem Standesamt bis hin zur Feier! Durch seine sympathische und professionelle Art, die auch den Gästen in Erinnerung geblieben ist, war er an diesem Tag nicht nur Fotograf, sondern ein Teil der Hochzeitsgemeinschaft. Das Ergebnis und die Bilder sprechen für sich. Danke, dass du unseren besonderen Tag begleitet hast und die besonderen Momente festgehalten hast!</p></blockquote>
+        <figcaption>Emmanuel &amp; Sarah <span>· Hochzeit</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Erzählt mir von eurem Tag</h2>
+      <p>Ihr habt Interesse oder einfach eine Frage? Schreibt mir gerne. Egal ob ihr schon einen festen Termin im Kopf habt oder erstmal nur schauen wollt, was möglich ist. Ich freu mich auf eure Nachricht.</p>
+      <p>Ich melde mich innerhalb von 24 Stunden bei euch.</p>
+      <ul class="contact-list">
+        <li><span>E-Mail</span><a href="mailto:jamie.lee.riedel@gmail.com">jamie.lee.riedel@gmail.com</a></li>
+        <li><span>Telefon / WhatsApp</span><a href="tel:+491771846741">+49 1771 846741</a></li>
+        <li><span>Standort</span>Wuppertal · NRW · deutschlandweit</li>
+        <li><span>Instagram</span><a href="https://instagram.com/jamieriedel" target="_blank" rel="noopener">@jamieriedel</a></li>
+      </ul>
+    </div>
     <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgogplrd" method="POST" data-email="jamie.lee.riedel@gmail.com" data-formspree="xgogplrd">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name *</label>
-          <input type="text" id="name" name="name" placeholder="Dein Name" autocomplete="name" required />
+          <input type="text" id="name" name="name" autocomplete="name" required />
         </div>
         <div class="form-group">
           <label for="email">E-Mail *</label>
-          <input type="email" id="email" name="email" placeholder="deine@email.de" autocomplete="email" required />
+          <input type="email" id="email" name="email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="service">Was interessiert euch?</label>
+          <select id="service" name="service"><option value="">Bitte wählen</option><option>Hochzeit – Standesamt (300 €)</option><option>Hochzeit – Hochzeitsreportage (1.000 €)</option><option>Hochzeit – Ganzer Tag (1.500 €)</option><option>Portrait (100 €)</option><option>Couple / Familie (150 €)</option><option>Events (ab 300 €)</option><option>Sonstiges</option></select>
+        </div>
+        <div class="form-group">
+          <label for="date">Datum (falls bekannt)</label>
+          <input type="date" id="date" name="datum" />
         </div>
       </div>
       <div class="form-group">
-        <label for="service">Was interessiert dich?</label>
-        <select id="service" name="service"><option value="">Bitte wählen…</option><option>Hochzeit (ab 300 €)</option><option>Portrait (100 €)</option><option>Couple / Familie (150 €)</option><option>Events (ab 300 €)</option><option>Sonstiges</option></select>
-      </div>
-      <div class="form-group">
-        <label for="date">Gewünschtes Datum (falls bekannt)</label>
-        <input type="date" id="date" name="datum" />
-      </div>
-      <div class="form-group">
-        <label for="message">Deine Nachricht *</label>
-        <textarea id="message" name="nachricht" placeholder="Erzähl mir von deinem Wunsch-Shooting — Anlass, Ort, besondere Wünsche…" required></textarea>
+        <label for="message">Nachricht *</label>
+        <textarea id="message" name="nachricht" placeholder="Ort, ungefähre Gästezahl, was euch wichtig ist …" required></textarea>
       </div>
       <input type="hidden" name="_subject" value="Anfrage über jamieriedel.com" />
-      <button type="submit" class="form-submit" id="formSubmit">Anfrage senden</button>
+      <button type="submit" class="btn form-submit" id="formSubmit">Anfrage senden</button>
       <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-      <p class="form-hint">Lieber direkt? Schreib mir an <a href="mailto:jamie.lee.riedel@gmail.com">jamie.lee.riedel@gmail.com</a>.</p>
+      <p class="form-hint">Lieber direkt? Schreibt an <a href="mailto:jamie.lee.riedel@gmail.com">jamie.lee.riedel@gmail.com</a>.</p>
     </form>
   </div>
 </section>
@@ -889,21 +593,36 @@ h1.hero-tag { font-family: var(--sans); font-weight: 400; }
 <a class="wa-btn" href="https://wa.me/491771846741?text=Hey%20Jamie!%20Ich%20h%C3%A4tte%20Interesse%20an%20einem%20Shooting." target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-<span class="wa-tooltip">Schnelle Frage? Schreib mir!</span>
 
-<footer>
-  <div class="footer-left">
-    <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); letter-spacing:0.08em;">© <span id="year">2026</span> Jamie-Lee Riedel</div>
-    <p>Alle Rechte vorbehalten</p>
-  </div>
-  <div class="footer-logo">Jamie's <span>Lens</span></div>
-  <div class="footer-right">
-    <a href="/hochzeitsfotograf-wuppertal/">Hochzeitsfotograf Wuppertal</a>
-    <a href="/hochzeitsfotograf-duesseldorf/">Hochzeitsfotograf Düsseldorf</a>
-    <a href="/preise/">Preise</a>
-    <a href="/portfolio/">Portfolio</a>
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">Jamie&#39;s Lens</a>
+        <p>Jamie-Lee Riedel – Hochzeitsfotograf aus Wuppertal für Düsseldorf, das Bergische Land und ganz NRW.</p>
+      </div>
+      <div>
+        <h2>Hochzeitsfotografie</h2>
+        <ul>
+          <li><a href="/hochzeitsfotograf-wuppertal/">Hochzeitsfotograf Wuppertal</a></li>
+          <li><a href="/hochzeitsfotograf-duesseldorf/">Hochzeitsfotograf Düsseldorf</a></li>
+          <li><a href="/preise/">Pakete und Preise</a></li>
+          <li><a href="/portfolio/">Portfolio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Kontakt</h2>
+        <ul>
+          <li><a href="mailto:jamie.lee.riedel@gmail.com">jamie.lee.riedel@gmail.com</a></li>
+          <li><a href="tel:+491771846741">+49 1771 846741</a></li>
+          <li><a href="https://instagram.com/jamieriedel" target="_blank" rel="noopener">Instagram @jamieriedel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Jamie-Lee Riedel</span>
+      <span><a href="/impressum.html" style="color:inherit">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html" style="color:inherit">Datenschutz</a></span>
+    </div>
   </div>
 </footer>
 

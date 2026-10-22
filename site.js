@@ -25,8 +25,9 @@
   filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var cat = btn.getAttribute('data-filter');
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      filterBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       document.querySelectorAll('.gallery-item').forEach(function (el) {
         el.classList.toggle('hidden', cat !== 'Alle' && el.getAttribute('data-category') !== cat);
       });
@@ -109,7 +110,7 @@
         body: new FormData(form)
       }).then(function (res) {
         if (!res.ok) throw new Error('send failed');
-        showStatus('✓ Danke! Deine Anfrage ist angekommen. Ich melde mich so schnell wie möglich bei dir.', 'ok');
+        showStatus('Danke! Die Anfrage ist angekommen – ich melde mich innerhalb von 24 Stunden.', 'ok');
         form.reset();
       }).catch(function () {
         showStatus('✗ Senden fehlgeschlagen. Schreib mir bitte direkt an ' + email + '.', 'err');

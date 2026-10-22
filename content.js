@@ -30,7 +30,7 @@ window.SITE_CONTENT = {
 
   // ---------- CONVERSION-ELEMENTE ----------
   availabilityNote: "Für 2026 sind noch einzelne Hochzeitstermine frei",
-  responsePromise: "Ich melde mich innerhalb von 24 Stunden bei dir.",
+  responsePromise: "Ich melde mich innerhalb von 24 Stunden bei euch.",
 
   // ---------- HERO ----------
   hero: {
@@ -48,20 +48,19 @@ window.SITE_CONTENT = {
   // ---------- ÜBER MICH ----------
   about: {
     // Zitierfähiger Absatz: Wer, Was, Wo, Preis, wie anfragen
-    lead: "Jamie's Lens ist das Fotografie-Angebot von Jamie-Lee Riedel, Hochzeitsfotograf aus Wuppertal. Ich begleite Hochzeiten in Wuppertal, Düsseldorf, im Bergischen Land und in ganz NRW – natürlich und ohne Standardposen. Hochzeitsreportagen gibt es ab 300 €; anfragen könnt ihr über das Kontaktformular, per WhatsApp oder per E-Mail.",
+    lead: "Jamie's Lens ist das Fotografie-Angebot von Jamie-Lee Riedel, Hochzeitsfotograf aus Wuppertal mit fünf Jahren Erfahrung und über 15 begleiteten Hochzeiten. Ich begleite Hochzeiten in Wuppertal, Düsseldorf, im Bergischen Land und in ganz NRW – natürlich und ohne Standardposen. Hochzeitsreportagen gibt es ab 300 €; anfragen könnt ihr über das Kontaktformular, per WhatsApp oder per E-Mail.",
     image: "images/fotograf-jamie-lee-riedel-wuppertal.jpg",
     imageAlt: "Jamie-Lee Riedel, Hochzeitsfotograf aus Wuppertal, mit Kamera vor einem türkisfarbenen Bus",
     imageFallback: "",
     paragraphs: [
-      "Hey, ich bin Jamie. Ich komme aus Wuppertal und fotografiere seit ein paar Jahren das, was mich am meisten begeistert: echte Menschen in echten Momenten.",
+      "Hey, ich bin Jamie. Ich komme aus Wuppertal und fotografiere seit fünf Jahren das, was mich am meisten begeistert: echte Menschen in echten Momenten.",
       "Mir ist es wichtig, dass ihr euch vor meiner Kamera wohlfühlt. Kein steifes Posing, kein Stress. Wir lernen uns vorher kennen, quatschen ein bisschen und wenn es dann losgeht, seid ihr einfach ihr selbst.",
       "Meine Bilder sind natürlich, ehrlich und haben Stimmung. Die Art von Fotos, die ihr euch in zehn Jahren anschaut und sofort wieder wisst, wie sich dieser Moment angefühlt hat."
     ],
     stats: [
-      { num: "10+",  label: "Hochzeiten fotografiert" },
-      { num: "3+",   label: "Jahre Erfahrung" },
-      { num: "100%", label: "mit Herzblut dabei" },
-      { num: "NRW",  label: "& deutschlandweit" }
+      { num: "15+", label: "Hochzeiten begleitet" },
+      { num: "5",   label: "Jahre Erfahrung" },
+      { num: "NRW", label: "und auf Anfrage deutschlandweit" }
     ]
   },
 
@@ -102,7 +101,7 @@ window.SITE_CONTENT = {
       price: "ab 300 €",
       priceFrom: 300,
       priceNote: "Jede Hochzeit ist anders",
-      cta: "Unverbindlich anfragen →"
+      cta: "Unverbindlich anfragen"
     },
     {
       name: "Portrait",
@@ -111,7 +110,7 @@ window.SITE_CONTENT = {
       price: "100 €",
       priceFrom: 100,
       priceNote: "Festpreis",
-      cta: "Jetzt buchen →"
+      cta: "Termin anfragen"
     },
     {
       name: "Couple / Familie",
@@ -120,7 +119,7 @@ window.SITE_CONTENT = {
       price: "150 €",
       priceFrom: 150,
       priceNote: "Festpreis",
-      cta: "Jetzt buchen →"
+      cta: "Termin anfragen"
     },
     {
       name: "Events",
@@ -129,7 +128,7 @@ window.SITE_CONTENT = {
       price: "ab 300 €",
       priceFrom: 300,
       priceNote: "Je nach Umfang",
-      cta: "Unverbindlich anfragen →"
+      cta: "Unverbindlich anfragen"
     }
   ],
 
@@ -167,7 +166,7 @@ window.SITE_CONTENT = {
 
   // ---------- KONTAKT ----------
   contact: {
-    introText: "Du hast Interesse oder einfach eine Frage? Schreib mir gerne. Egal ob du schon einen festen Termin im Kopf hast oder erstmal nur schauen willst, was möglich ist. Ich freu mich auf deine Nachricht.",
+    introText: "Ihr habt Interesse oder einfach eine Frage? Schreibt mir gerne. Egal ob ihr schon einen festen Termin im Kopf habt oder erstmal nur schauen wollt, was möglich ist. Ich freu mich auf eure Nachricht.",
     email: "jamie.lee.riedel@gmail.com",
     phone: "+49 1771 846741",
     location: "Wuppertal · NRW · deutschlandweit",

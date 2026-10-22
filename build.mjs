@@ -144,10 +144,13 @@ const NAV_LINKS = [
   ['/preise/', 'Preise'],
   ['/#contact', 'Kontakt']
 ];
+const eur = (n) => Number(n).toLocaleString('de-DE') + ' €';
 
-function layout({ urlPath, title, description, main, ld = [], preload = '' }) {
+function layout({ urlPath, title, description, main, ld = [], preload = '', robots = '' }) {
   const url = SITE + urlPath;
   const ogImg = abs(largest(C.meta.ogImage || C.hero.image));
+  const current = (h) => (h === urlPath ? ' aria-current="page"' : '');
+  const navItems = NAV_LINKS.map(([h, t]) => `<li><a href="${h}"${current(h)}>${t}</a></li>`);
   return `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -156,6 +159,8 @@ function layout({ urlPath, title, description, main, ld = [], preload = '' }) {
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}" />
   <link rel="canonical" href="${url}" />
+  ${robots ? `<meta name="robots" content="${robots}" />` : ''}
+  <meta name="theme-color" content="#FBFAF7" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
   <meta property="og:type" content="website" />
@@ -179,18 +184,23 @@ ${CSS}  </style>
 <body>
 <!-- Diese Datei wird automatisch von build.mjs erzeugt. Nicht von Hand bearbeiten. -->
 
-<nav>
-  <a href="/" class="nav-logo">Jamie's <span>Lens</span></a>
-  <ul class="nav-links">
-    ${NAV_LINKS.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('\n    ')}
-  </ul>
-  <a href="/#contact" class="nav-cta">Anfragen</a>
-  <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<header class="site-nav">
+  <div class="wrap">
+    <a href="/" class="nav-logo">${esc(BRAND)}</a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav-links">
+        ${navItems.join('\n        ')}
+      </ul>
+    </nav>
+    <a href="/#contact" class="btn nav-cta">Anfragen</a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 <ul class="mobile-menu" id="mobileMenu">
-  ${NAV_LINKS.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('\n  ')}
+  ${navItems.join('\n  ')}
+  <li><a href="/#contact">Anfrage senden</a></li>
 </ul>
 
 <main>
@@ -199,19 +209,35 @@ ${main}
 
 ${whatsappButton()}
 
-<footer>
-  <div class="footer-left">
-    <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); letter-spacing:0.08em;">© <span id="year">${YEAR}</span> ${esc(OWNER)}</div>
-    <p>Alle Rechte vorbehalten</p>
-  </div>
-  <div class="footer-logo">Jamie's <span>Lens</span></div>
-  <div class="footer-right">
-    <a href="/${C.pages.wuppertal.slug}/">Hochzeitsfotograf Wuppertal</a>
-    <a href="/${C.pages.duesseldorf.slug}/">Hochzeitsfotograf Düsseldorf</a>
-    <a href="/preise/">Preise</a>
-    <a href="/portfolio/">Portfolio</a>
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">${esc(BRAND)}</a>
+        <p>${esc(OWNER)} – Hochzeitsfotograf aus Wuppertal für Düsseldorf, das Bergische Land und ganz NRW.</p>
+      </div>
+      <div>
+        <h2>Hochzeitsfotografie</h2>
+        <ul>
+          <li><a href="/${C.pages.wuppertal.slug}/">Hochzeitsfotograf Wuppertal</a></li>
+          <li><a href="/${C.pages.duesseldorf.slug}/">Hochzeitsfotograf Düsseldorf</a></li>
+          <li><a href="/preise/">Pakete und Preise</a></li>
+          <li><a href="/portfolio/">Portfolio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Kontakt</h2>
+        <ul>
+          <li><a href="mailto:${esc(C.contact.email)}">${esc(C.contact.email)}</a></li>
+          <li><a href="tel:${esc(C.contact.phone.replace(/\s/g, ''))}">${esc(C.contact.phone)}</a></li>
+          <li><a href="${esc(C.contact.instagramUrl)}" target="_blank" rel="noopener">Instagram ${esc(C.contact.instagram)}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">${YEAR}</span> ${esc(OWNER)}</span>
+      <span><a href="/impressum.html" style="color:inherit">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html" style="color:inherit">Datenschutz</a></span>
+    </div>
   </div>
 </footer>
 
@@ -232,261 +258,272 @@ function whatsappButton() {
   const href = 'https://wa.me/' + k.whatsappNumber.replace(/\D/g, '') + '?text=' + encodeURIComponent(k.whatsappGreeting || '');
   return `<a class="wa-btn" href="${esc(href)}" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<span class="wa-tooltip">Schnelle Frage? Schreib mir!</span>`;
+</a>`;
 }
 
 function sectionHero() {
   const h = C.hero;
   const pic = heroPicture();
-  const html = `<section id="hero">
+  const html = `<section class="hero" id="hero" aria-labelledby="hero-title">
   <div class="hero-text">
-    <h1 class="hero-tag">${esc(h.h1)}</h1>
-    <p class="hero-title">${esc(h.titleLine1)}<br>${esc(h.titleLine2Prefix)}<em>${esc(h.titleLine2Em)}</em></p>
-    <p class="hero-sub">${esc(h.subtitle)}</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Jetzt anfragen</a>
-      <a href="/portfolio/" class="btn-secondary">Portfolio ansehen</a>
+    <h1 id="hero-title">${esc(h.h1)}</h1>
+    <p class="lede">${esc(h.subtitle)}</p>
+    <div class="actions">
+      <a href="#contact" class="btn">Termin anfragen</a>
+      <a href="/portfolio/" class="link">Portfolio ansehen</a>
     </div>
+    ${C.availabilityNote ? `<p class="hero-note">${esc(C.availabilityNote)}</p>` : ''}
   </div>
   <div class="hero-image">
     ${pic.html}
   </div>
-  <div class="hero-scroll">Scroll</div>
 </section>`;
   return { html, preload: pic.preload };
 }
 
-function marquee() {
-  const items = ['Hochzeitsfotografie', 'Portrait Sessions', 'Event Fotografie', 'Wuppertal & NRW', 'Authentische Momente'];
-  const spans = Array(4).fill(items).flat().map((t) => `<span>${esc(t)}</span>`).join('');
-  return `<div class="marquee-wrap" aria-hidden="true"><div class="marquee-track">${spans}</div></div>`;
-}
-
-function sectionAbout({ headingLevel = 'h2', links = '' } = {}) {
+function sectionAbout({ links = '' } = {}) {
   const a = C.about;
   return `<section id="about">
-  <div class="about-image fade-up">
-    <div class="about-image-accent"></div>
-    ${img(a.image, { alt: a.imageAlt || OWNER, sizes: '(max-width: 900px) 100vw, 45vw' })}
-  </div>
-  <div class="about-text fade-up">
-    <p class="section-label">Über mich</p>
-    <${headingLevel} class="section-title">Hallo, ich bin<br><em>Jamie-Lee</em></${headingLevel}>
-    ${a.lead ? `<p class="about-lead">${esc(a.lead)}</p>` : ''}
-    <div id="aboutParagraphs">
+  <div class="wrap about">
+    <div class="about-image">
+      ${img(a.image, { alt: a.imageAlt || OWNER, sizes: '(max-width: 1000px) 90vw, 40vw' })}
+    </div>
+    <div class="about-text">
+      <h2>Hallo, ich bin Jamie-Lee</h2>
+      ${a.lead ? `<p class="about-lead">${esc(a.lead)}</p>` : ''}
       ${a.paragraphs.map((p) => `<p>${esc(p)}</p>`).join('\n      ')}
+      <dl class="facts">
+        ${a.stats.map((s) => `<div><dt>${esc(s.num)}</dt><dd>${esc(s.label)}</dd></div>`).join('\n        ')}
+      </dl>
+      <div class="actions"><a href="#contact" class="btn">Kennenlernen vereinbaren</a></div>
+      ${links}
     </div>
-    <a href="#contact" class="btn-primary" style="margin-top: 1rem;">Unverbindlich anfragen</a>
-    <div class="about-stats">
-      ${a.stats.map((s) => `<div><div class="stat-num">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>`).join('\n      ')}
-    </div>
-    ${links}
   </div>
 </section>`;
 }
 
-function galleryGrid(items, { filters = true } = {}) {
-  const used = C.gallery.categories.filter((c) => items.some((i) => i.category === c));
-  const filterHtml = filters && used.length > 1
-    ? `<div class="gallery-filters" id="galleryFilters">${['Alle', ...used].map((c, i) =>
-      `<button type="button" class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${esc(c)}">${esc(c)}</button>`).join('')}</div>`
-    : '';
-  const grid = items.map((it) => `<figure class="gallery-item" data-category="${esc(it.category)}" data-full="${esc(largest(it.src))}">
-      ${img(it.src, { alt: it.alt || it.category, sizes: '(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw' })}
-      <div class="gallery-item-overlay"><span class="gallery-item-tag">${esc(it.category)}</span></div>
-    </figure>`).join('\n    ');
-  return `${filterHtml}
-  <div class="gallery-grid" id="galleryGrid">
-    ${grid}
-  </div>`;
+function figure(it, sizes) {
+  return `<figure class="gallery-item" data-category="${esc(it.category)}" data-full="${esc(largest(it.src))}">
+        ${img(it.src, { alt: it.alt || it.category, sizes })}
+      </figure>`;
 }
 
-function sectionGallery({ items, title = 'Ausgewählte<br><em>Arbeiten</em>', more = true, filters = true }) {
+/** Mosaik: Die 6. Kachel ist ein Panorama – dort ein Querformat platzieren. */
+function arrangeForMosaic(items) {
+  const out = items.slice(0, 6);
+  const isLandscape = (it) => { const m = manifest[it.src]; return m && m.width > m.height; };
+  if (out.length === 6 && !isLandscape(out[5])) {
+    const i = out.findIndex(isLandscape);
+    if (i !== -1) { const [l] = out.splice(i, 1); out.push(l); }
+    else { const extra = items.slice(6).find(isLandscape); if (extra) out[5] = extra; }
+  }
+  return out;
+}
+
+function sectionMosaic({ items, title, lede = '', more = true }) {
+  items = arrangeForMosaic(items);
   return `<section id="gallery">
-  <div class="gallery-header fade-up">
-    <div>
-      <p class="section-label">Portfolio</p>
-      <h2 class="section-title">${title}</h2>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>${esc(title)}</h2>
+      ${lede ? `<p class="lede">${esc(lede)}</p>` : ''}
     </div>
-    <a href="#contact" class="btn-secondary">Anfrage stellen</a>
+    <div class="mosaic">
+      ${items.map((it) => figure(it, '(max-width: 640px) 100vw, 60vw')).join('\n      ')}
+    </div>
+    ${more ? `<div class="section-foot"><a href="/portfolio/" class="link">Alle Arbeiten im Portfolio</a><a href="#contact" class="btn btn-ghost">Termin anfragen</a></div>` : ''}
   </div>
-  ${galleryGrid(items, { filters })}
-  ${more ? '<p class="section-more"><a href="/portfolio/" class="btn-secondary">Ganzes Portfolio ansehen</a></p>' : ''}
 </section>`;
 }
 
-function serviceCard(s, i) {
-  return `<article class="service-card fade-up">
-      <div class="service-num">${String(i + 1).padStart(2, '0')}</div>
-      <h3 class="service-name">${esc(s.name)}</h3>
-      <p class="service-desc">${esc(s.desc)}</p>
-      <ul class="service-includes">${s.includes.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-      <div class="service-price">${esc(s.price)}<small>${esc(s.priceNote)}</small></div>
-      <a href="#contact" class="service-cta">${esc(s.cta)}</a>
-    </article>`;
-}
-
-function sectionServices({ services = C.services, more = true, title = 'Was wir gemeinsam<br><em>erschaffen können</em>', extra = '' } = {}) {
-  return `<section id="services">
-  <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 1rem;">
-    <p class="section-label">Leistungen</p>
-    <h2 class="section-title">${title}</h2>
+function sectionPortfolio(items) {
+  const used = C.gallery.categories.filter((c) => items.some((i) => i.category === c));
+  const filters = used.length > 1
+    ? `<div class="gallery-filters" role="group" aria-label="Nach Kategorie filtern">${['Alle', ...used].map((c, i) =>
+      `<button type="button" class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join('')}</div>`
+    : '';
+  return `<section id="gallery" style="padding-top:0">
+  <div class="wrap">
+    ${filters}
+    <div class="gallery-grid">
+      ${items.map((it) => figure(it, '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw')).join('\n      ')}
+    </div>
   </div>
-  <div class="services-grid">
-    ${services.map(serviceCard).join('\n    ')}
-  </div>
-  ${extra}
-  ${more ? '<p class="section-more"><a href="/preise/" class="btn-secondary">Alle Preise im Überblick</a></p>' : ''}
 </section>`;
 }
 
-function sectionPackages({ title = 'Hochzeits<em>pakete</em>' } = {}) {
+function sectionPackages({ title = 'Hochzeitspakete', lede = 'Drei Pakete als Orientierung – am Ende planen wir euren Tag gemeinsam und passen alles an euch an.', others = true, bg = '' } = {}) {
   const P = C.weddingPackages || [];
   if (!P.length) return '';
-  const fmt = (n) => n.toLocaleString('de-DE') + ' €';
-  return `<section id="pakete">
-  <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 1rem;">
-    <p class="section-label">Hochzeit</p>
-    <h2 class="section-title">${title}</h2>
+  const rest = C.services.filter((s) => s.name !== 'Hochzeit');
+  const also = others && rest.length ? `<div class="also">
+      <h3>Außerdem</h3>
+      <ul>
+        ${rest.map((s) => `<li><strong>${esc(s.name)}</strong><span>${esc(s.price)} · ${esc(s.includes.slice(0, 2).join(', '))}</span></li>`).join('\n        ')}
+      </ul>
+    </div>` : '';
+  return `<section id="pakete"${bg ? ` style="background:${bg}"` : ''}>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>${esc(title)}</h2>
+      ${lede ? `<p class="lede">${esc(lede)}</p>` : ''}
+    </div>
+    <div class="packages">
+      ${P.map((p) => `<article class="package${p.highlight ? ' package--featured' : ''}">
+        <p class="package-tag">${p.highlight ? 'Am häufigsten gebucht' : ''}</p>
+        <h3>${esc(p.name)}</h3>
+        <p class="package-meta">${esc(p.hours)} · ${esc(p.images)}</p>
+        <p class="package-price">${eur(p.price)}</p>
+        <p class="package-desc">${esc(p.desc)}</p>
+        <ul>${p.includes.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+        <a href="#contact" class="btn${p.highlight ? '' : ' btn-ghost'}">${esc(p.name)} anfragen</a>
+      </article>`).join('\n      ')}
+    </div>
+    ${C.weddingPackagesNote ? `<p class="packages-note">${esc(C.weddingPackagesNote)}</p>` : ''}
+    ${also}
   </div>
-  <div class="services-grid">
-    ${P.map((p, i) => `<article class="service-card fade-up${p.highlight ? ' service-card--highlight' : ''}">
-      <div class="service-num">${p.highlight ? 'Beliebt' : String(i + 1).padStart(2, '0')}</div>
-      <h3 class="service-name">${esc(p.name)}</h3>
-      <p class="service-desc">${esc(p.desc)}</p>
-      <ul class="service-includes"><li>${esc(p.hours)}</li><li>${esc(p.images)}</li>${p.includes.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-      <div class="service-price">${fmt(p.price)}<small>Paketpreis</small></div>
-      <a href="#contact" class="service-cta">Termin anfragen →</a>
-    </article>`).join('\n    ')}
-  </div>
-  ${C.weddingPackagesNote ? `<p class="section-more" style="color:var(--gray); max-width:640px; margin-left:auto; margin-right:auto;">${esc(C.weddingPackagesNote)}</p>` : ''}
 </section>`;
 }
 
-function sectionProcess() {
+function sectionServices({ services, title, lede = '' }) {
+  return `<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>${esc(title)}</h2>
+      ${lede ? `<p class="lede">${esc(lede)}</p>` : ''}
+    </div>
+    <div class="services">
+      ${services.map((s) => `<article class="service">
+        <h3>${esc(s.name)}</h3>
+        <p>${esc(s.desc)}</p>
+        <ul>${s.includes.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+        <p class="service-price">${esc(s.price)}<small>${esc(s.priceNote)}</small></p>
+        <a href="#contact" class="link">${esc(s.cta)}</a>
+      </article>`).join('\n      ')}
+    </div>
+  </div>
+</section>`;
+}
+
+function sectionProcess({ bg = 'var(--sand)' } = {}) {
   const steps = C.process || [];
-  return `<section id="process">
-  <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto;">
-    <p class="section-label">Ablauf</p>
-    <h2 class="section-title">So einfach<br><em>läuft's ab</em></h2>
-  </div>
-  <div class="process-grid">
-    ${steps.map((s, i) => `<div class="process-step fade-up">
-      <div class="process-num">${String(i + 1).padStart(2, '0')}</div>
-      <h3>${esc(s.title)}</h3>
-      <p>${esc(s.text)}</p>
-      ${i < steps.length - 1 ? '<span class="process-arrow" aria-hidden="true">→</span>' : ''}
-    </div>`).join('\n    ')}
-  </div>
-  <div class="fade-up" style="text-align:center; margin-top: 4rem;">
-    <a href="#contact" class="btn-primary">Schritt 1 starten — Anfrage senden</a>
+  return `<section id="process" style="background:${bg}">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>So läuft es ab</h2>
+      <p class="lede">Von der ersten Nachricht bis zur fertigen Galerie – ohne Stress und mit einem festen Ansprechpartner.</p>
+    </div>
+    <ol class="steps">
+      ${steps.map((s) => `<li><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join('\n      ')}
+    </ol>
   </div>
 </section>`;
 }
 
 function sectionFaq(items = C.faq) {
   return `<section id="faq">
-  <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto;">
-    <p class="section-label">Häufige Fragen</p>
-    <h2 class="section-title">Gut zu<br><em>wissen</em></h2>
-  </div>
-  <div class="faq-list">
-    ${items.map((f, i) => `<div class="faq-item fade-up">
-      <h3 style="font: inherit; margin: 0;"><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}">${esc(f.q)}</button></h3>
-      <div class="faq-a" id="faq-a-${i}"><p>${esc(f.a)}</p></div>
-    </div>`).join('\n    ')}
+  <div class="wrap faq">
+    <div>
+      <h2>Häufige Fragen</h2>
+      <p class="lede">Eure Frage ist nicht dabei? Schreibt mir einfach – ich antworte innerhalb von 24 Stunden.</p>
+    </div>
+    <div class="faq-list">
+      ${items.map((f, i) => `<div class="faq-item">
+        <h3><button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}">${esc(f.q)}</button></h3>
+        <div class="faq-a" id="faq-a-${i}"><p>${esc(f.a)}</p></div>
+      </div>`).join('\n      ')}
+    </div>
   </div>
 </section>`;
 }
 
 function sectionTestimonials() {
   if (!C.testimonials || !C.testimonials.length) return '';
-  return `<section id="testimonials">
-  <div class="fade-up" style="text-align:center; max-width:600px; margin: 0 auto;">
-    <p class="section-label" style="color:var(--accent)">Stimmen</p>
-    <h2 class="section-title">Was Kund:innen<br><em>sagen</em></h2>
-  </div>
-  <div class="testimonials-grid">
-    ${C.testimonials.map((t) => `<blockquote class="testimonial fade-up">
-      <p class="testimonial-text">${esc(t.text)}</p>
-      <div class="testimonial-name">${esc(t.name)}</div>
-      <div class="testimonial-event">${esc(t.event)}</div>
-    </blockquote>`).join('\n    ')}
+  return `<section id="testimonials" class="voices">
+  <div class="wrap">
+    <div class="section-head center">
+      <h2>Was Kund:innen sagen</h2>
+    </div>
+    <div class="quotes">
+      ${C.testimonials.map((t) => `<figure class="quote">
+        <blockquote><p>${esc(t.text)}</p></blockquote>
+        <figcaption>${esc(t.name)} <span>· ${esc(t.event)}</span></figcaption>
+      </figure>`).join('\n      ')}
+    </div>
   </div>
 </section>`;
 }
 
 function sectionContact() {
   const k = C.contact;
-  const details = [
-    ['✉', 'E-Mail', `<a href="mailto:${esc(k.email)}">${esc(k.email)}</a>`],
-    ['☎', 'Telefon / WhatsApp', `<a href="tel:${esc(k.phone.replace(/\s/g, ''))}">${esc(k.phone)}</a>`],
-    ['📍', 'Standort', esc(k.location)],
-    ['◎', 'Instagram', `<a href="${esc(k.instagramUrl)}" target="_blank" rel="noopener">${esc(k.instagram)}</a>`]
-  ];
   const action = k.formspreeId ? `action="https://formspree.io/f/${esc(k.formspreeId)}" method="POST"` : `action="mailto:${esc(k.email)}" method="POST" enctype="text/plain"`;
-  const options = ['<option value="">Bitte wählen…</option>',
-    ...C.services.map((s) => `<option>${esc(s.name + ' (' + s.price + ')')}</option>`), '<option>Sonstiges</option>'].join('');
-  return `<section id="contact">
-  <div class="contact-info fade-up">
-    <p class="section-label">Kontakt</p>
-    <h2 class="section-title">Lass uns<br><em>reden</em></h2>
-    <p>${esc(k.introText)}</p>
-    ${C.responsePromise ? `<p>${esc(C.responsePromise)}</p>` : ''}
-    <div>
-      ${details.map(([icon, label, html]) => `<div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">${icon}</div><div class="contact-detail-text"><strong>${label}</strong>${html}</div></div>`).join('\n      ')}
+  const options = ['<option value="">Bitte wählen</option>',
+    ...(C.weddingPackages || []).map((p) => `<option>Hochzeit – ${esc(p.name)} (${eur(p.price)})</option>`),
+    ...C.services.filter((s) => s.name !== 'Hochzeit').map((s) => `<option>${esc(s.name + ' (' + s.price + ')')}</option>`),
+    '<option>Sonstiges</option>'].join('');
+  return `<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Erzählt mir von eurem Tag</h2>
+      <p>${esc(k.introText)}</p>
+      ${C.responsePromise ? `<p>${esc(C.responsePromise)}</p>` : ''}
+      <ul class="contact-list">
+        <li><span>E-Mail</span><a href="mailto:${esc(k.email)}">${esc(k.email)}</a></li>
+        <li><span>Telefon / WhatsApp</span><a href="tel:${esc(k.phone.replace(/\s/g, ''))}">${esc(k.phone)}</a></li>
+        <li><span>Standort</span>${esc(k.location)}</li>
+        <li><span>Instagram</span><a href="${esc(k.instagramUrl)}" target="_blank" rel="noopener">${esc(k.instagram)}</a></li>
+      </ul>
     </div>
-  </div>
-
-  <div class="fade-up">
     <form class="contact-form" id="contactForm" ${action} data-email="${esc(k.email)}" data-formspree="${esc(k.formspreeId || '')}">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name *</label>
-          <input type="text" id="name" name="name" placeholder="Dein Name" autocomplete="name" required />
+          <input type="text" id="name" name="name" autocomplete="name" required />
         </div>
         <div class="form-group">
           <label for="email">E-Mail *</label>
-          <input type="email" id="email" name="email" placeholder="deine@email.de" autocomplete="email" required />
+          <input type="email" id="email" name="email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="service">Was interessiert euch?</label>
+          <select id="service" name="service">${options}</select>
+        </div>
+        <div class="form-group">
+          <label for="date">Datum (falls bekannt)</label>
+          <input type="date" id="date" name="datum" />
         </div>
       </div>
       <div class="form-group">
-        <label for="service">Was interessiert dich?</label>
-        <select id="service" name="service">${options}</select>
-      </div>
-      <div class="form-group">
-        <label for="date">Gewünschtes Datum (falls bekannt)</label>
-        <input type="date" id="date" name="datum" />
-      </div>
-      <div class="form-group">
-        <label for="message">Deine Nachricht *</label>
-        <textarea id="message" name="nachricht" placeholder="Erzähl mir von deinem Wunsch-Shooting — Anlass, Ort, besondere Wünsche…" required></textarea>
+        <label for="message">Nachricht *</label>
+        <textarea id="message" name="nachricht" placeholder="Ort, ungefähre Gästezahl, was euch wichtig ist …" required></textarea>
       </div>
       <input type="hidden" name="_subject" value="Anfrage über jamieriedel.com" />
-      <button type="submit" class="form-submit" id="formSubmit">Anfrage senden</button>
+      <button type="submit" class="btn form-submit" id="formSubmit">Anfrage senden</button>
       <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-      <p class="form-hint">Lieber direkt? Schreib mir an <a href="mailto:${esc(k.email)}">${esc(k.email)}</a>.</p>
+      <p class="form-hint">Lieber direkt? Schreibt an <a href="mailto:${esc(k.email)}">${esc(k.email)}</a>.</p>
     </form>
   </div>
 </section>`;
 }
 
-function pageIntro({ label, h1, paragraphs, cta = true }) {
+function pageIntro({ crumb, h1, paragraphs, cta = true }) {
   return `<section class="page-intro">
-  <p class="section-label">${esc(label)}</p>
-  <h1>${esc(h1)}</h1>
-  ${paragraphs.map((p) => `<p>${esc(p)}</p>`).join('\n  ')}
-  ${cta ? `<div class="hero-actions"><a href="#contact" class="btn-primary">Jetzt anfragen</a><a href="/portfolio/" class="btn-secondary">Portfolio ansehen</a></div>` : ''}
+  <div class="wrap">
+    ${crumb ? `<p class="crumbs"><a href="/">Startseite</a> / ${esc(crumb)}</p>` : ''}
+    <h1>${esc(h1)}</h1>
+    ${paragraphs.map((p) => `<p class="lede">${esc(p)}</p>`).join('\n    ')}
+    ${cta ? `<div class="actions"><a href="#contact" class="btn">Termin anfragen</a><a href="/portfolio/" class="link">Portfolio ansehen</a></div>` : ''}
+  </div>
 </section>`;
 }
 
 function cityLinks() {
-  return `<div class="page-links">
-    <a href="/${C.pages.wuppertal.slug}/">Hochzeitsfotograf Wuppertal</a>
-    <a href="/${C.pages.duesseldorf.slug}/">Hochzeitsfotograf Düsseldorf</a>
-    <a href="/preise/">Preise</a>
-  </div>`;
+  return `<p class="page-links">
+        <a class="link" href="/${C.pages.wuppertal.slug}/">Hochzeitsfotograf Wuppertal</a>
+        <a class="link" href="/${C.pages.duesseldorf.slug}/">Hochzeitsfotograf Düsseldorf</a>
+      </p>`;
 }
 
 // ── Seiten ──
@@ -499,13 +536,12 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
   const hero = sectionHero();
   const main = [
     hero.html,
-    marquee(),
+    sectionMosaic({ items: weddingItems, title: 'Ausgewählte Hochzeiten', lede: 'Echte Paare, echte Tage – vom Standesamt in Wuppertal bis zur Feier im Grünen.' }),
     sectionAbout({ links: cityLinks() }),
-    sectionGallery({ items: C.gallery.items.slice(0, C.gallery.homeCount || 9) }),
-    sectionServices(),
+    sectionTestimonials(),
+    sectionPackages(),
     sectionProcess(),
     sectionFaq(),
-    sectionTestimonials(),
     sectionContact()
   ].join('\n\n');
   pages.push({
@@ -526,9 +562,9 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
   const P = C.pages.preise;
   const url = SITE + '/preise/';
   const main = [
-    pageIntro({ label: 'Preise', h1: P.h1, paragraphs: [P.intro] }),
-    sectionPackages(),
-    sectionServices({ services: C.services.filter((x) => x.name !== 'Hochzeit'), more: false, title: 'Portraits, Paare<br><em>&amp; Events</em>' }),
+    pageIntro({ crumb: 'Preise', h1: P.h1, paragraphs: [P.intro], cta: false }),
+    sectionPackages({ others: false }),
+    sectionServices({ services: C.services.filter((x) => x.name !== 'Hochzeit'), title: 'Portraits, Paare und Events', lede: 'Auch abseits von Hochzeiten fotografiere ich gern – entspannt und ohne Standardposen.' }),
     sectionFaq(C.faq.filter((f) => /Bezahlung|außerhalb|Bilder bekomme/.test(f.q))),
     sectionContact()
   ].join('\n\n');
@@ -547,8 +583,8 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
   const P = C.pages.portfolio;
   const url = SITE + '/portfolio/';
   const main = [
-    pageIntro({ label: 'Portfolio', h1: P.h1, paragraphs: [P.intro], cta: false }),
-    sectionGallery({ items: C.gallery.items, title: 'Alle<br><em>Arbeiten</em>', more: false }),
+    pageIntro({ crumb: 'Portfolio', h1: P.h1, paragraphs: [P.intro], cta: false }),
+    sectionPortfolio(C.gallery.items),
     sectionTestimonials(),
     sectionContact()
   ].join('\n\n');
@@ -573,11 +609,11 @@ for (const key of ['wuppertal', 'duesseldorf']) {
        z. B. Standesämter, Locations oder Parks, an denen du schon fotografiert hast, und 1–2 Bilder von dort
        (Alt-Text mit Ort). Keine erfundenen Orte eintragen. -->`;
   const main = [
-    pageIntro({ label: 'Hochzeitsfotografie · ' + city, h1: P.h1, paragraphs: P.intro }) + '\n' + todo,
-    sectionGallery({ items: weddingItems.slice(0, 9), title: 'Hochzeiten<br><em>aus meiner Kamera</em>', more: true, filters: false }),
-    sectionPackages({ title: 'Eure Hochzeit<br><em>mit mir</em>' }) + '\n<p class="section-more"><a href="/preise/" class="btn-secondary">Alle Preise im Überblick</a></p>',
-    sectionProcess(),
+    pageIntro({ crumb: 'Hochzeitsfotograf ' + city, h1: P.h1, paragraphs: P.intro }) + '\n' + todo,
+    sectionMosaic({ items: key === 'wuppertal' ? weddingItems : [...weddingItems].reverse(), title: 'Hochzeiten aus meiner Kamera', more: true }),
     sectionTestimonials(),
+    sectionPackages({ title: 'Pakete für eure Hochzeit', others: false }),
+    sectionProcess(),
     sectionFaq(C.faq.filter((f) => /außerhalb|kennenlernen|Bezahlung|lange dauert/.test(f.q))),
     sectionContact()
   ].join('\n\n');
@@ -587,11 +623,27 @@ for (const key of ['wuppertal', 'duesseldorf']) {
       ld: [{ '@context': 'https://schema.org', '@graph': [
         { '@type': 'Service', '@id': url + '#service', name: 'Hochzeitsfotografie in ' + city, serviceType: 'Hochzeitsfotografie',
           description: P.intro.join(' '), url, provider: { '@id': BUSINESS_ID },
-          areaServed: { '@type': 'City', name: city }, offers: offerFor(wedding, url) },
+          areaServed: { '@type': 'City', name: city }, offers: packageOffers(url) },
         { ...business },
         breadcrumb('Hochzeitsfotograf ' + city, url)
       ] }] })
   });
+}
+
+// Rechtliches (Inhalt aus src/legal/)
+for (const [name, h1] of [['impressum', 'Impressum'], ['datenschutz', 'Datenschutzerklärung']]) {
+  const body = read(`src/legal/${name}.html`);
+  const main = `<section class="page-intro legal">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Startseite</a> / ${h1}</p>
+    <h1>${h1}</h1>
+    <div class="legal-body">
+${body}
+    </div>
+  </div>
+</section>`;
+  pages.push({ file: `${name}.html`, urlPath: `/${name}.html`, legal: true,
+    html: layout({ urlPath: `/${name}.html`, title: `${h1} – ${BRAND}`, description: `${h1} von ${BRAND} (${OWNER}), Wuppertal.`, main, robots: 'noindex, follow' }) });
 }
 
 // ── Schreiben ──
@@ -601,10 +653,10 @@ for (const p of pages) {
   fs.writeFileSync(out, p.html);
 }
 
-const extra = [['/impressum.html', '0.3', 'yearly'], ['/datenschutz.html', '0.3', 'yearly']];
+const extra = []; // Impressum/Datenschutz sind noindex und daher nicht in der Sitemap
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...pages.map((p) => [p.urlPath, p.priority, 'monthly']), ...extra].map(([u, pr, cf]) => `  <url>
+${[...pages.filter((p) => !p.legal).map((p) => [p.urlPath, p.priority, 'monthly']), ...extra].map(([u, pr, cf]) => `  <url>
     <loc>${SITE}${u}</loc>
     <lastmod>${TODAY}</lastmod>
     <changefreq>${cf}</changefreq>
