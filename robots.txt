@@ -1,5 +1,23 @@
+# Alle Suchmaschinen und KI-Crawler sind ausdrücklich erlaubt.
+# admin.html ist per <meta name="robots" content="noindex"> von der Indexierung ausgeschlossen.
+# (Ein Disallow würde verhindern, dass Google dieses noindex überhaupt sieht.)
+
 User-agent: *
 Allow: /
-Disallow: /admin.html
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: https://jamieriedel.com/sitemap.xml

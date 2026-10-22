@@ -1,0 +1,58 @@
+# Baut die Website automatisch, wenn content.js, Bilder oder Design geändert werden.
+# Ergebnis: fertige HTML-Seiten + Bildvarianten werden ins Repo zurückgeschrieben,
+# danach veröffentlicht GitHub Pages wie gewohnt.
+name: Website bauen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content.js'
+      - 'build.mjs'
+      - 'site.js'
+      - 'src/**'
+      - 'scripts/**'
+      - 'images/**'
+      - '!images/r/**'
+      - '!images/manifest.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install "pillow>=11.3"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Bildvarianten erzeugen
+        run: python scripts/images.py
+
+      - name: HTML-Seiten bauen
+        run: node build.mjs
+
+      - name: Ergebnis committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen."
+          else
+            git commit -m "Website automatisch neu gebaut"
+            git push
+          fi

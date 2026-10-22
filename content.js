@@ -3,71 +3,92 @@
 //  Diese Datei steuert ALLE Inhalte der Website.
 //  Bearbeite sie bequem über admin.html (empfohlen)
 //  oder direkt hier im Texteditor.
+//  Nach dem Hochladen baut GitHub daraus automatisch die
+//  fertigen HTML-Seiten (siehe ANLEITUNG.md).
 // ============================================================
 
 window.SITE_CONTENT = {
 
-  // ---------- ALLGEMEIN & SEO ----------
+  // ---------- MARKE ----------
+  brand: {
+    name: "Jamie's Lens",
+    owner: "Jamie-Lee Riedel",
+    city: "Wuppertal"
+  },
+
+  // ---------- ALLGEMEIN & SEO (Startseite) ----------
   meta: {
-    title: "Hochzeitsfotograf Wuppertal & NRW – Jamie's Lens | Portraits & Events",
-    description: "Hochzeitsfotograf aus Wuppertal ✓ Authentische Hochzeitsreportagen, Portraits & Eventfotografie in NRW ✓ Faire Preise ab 100 € ✓ Jetzt unverbindlich anfragen!",
-    siteUrl: "https://jamieriedel.com"
+    title: "Hochzeitsfotograf Wuppertal & Düsseldorf – Jamie's Lens",
+    description: "Hochzeitsfotograf aus Wuppertal für Düsseldorf & ganz NRW: natürliche Hochzeitsreportagen ohne Standardposen. Hochzeit ab 300 €. Jetzt anfragen.",
+    siteUrl: "https://jamieriedel.com",
+    ogImage: "images/hero.webp",
+    // Einstiegspreis Hochzeit für strukturierte Daten (nur Zahl)
+    weddingPriceFrom: 300,
+    // Links zu Profilen (Google-Unternehmensprofil hier ergänzen, sobald vorhanden)
+    sameAs: ["https://instagram.com/jamieriedel"]
   },
 
   // ---------- CONVERSION-ELEMENTE ----------
   availabilityNote: "Für 2026 sind noch einzelne Hochzeitstermine frei",
-  responsePromise: "Ich melde mich innerhalb von 24 Stunden bei dir.",
+  responsePromise: "Ich melde mich innerhalb von 24 Stunden bei euch.",
 
   // ---------- HERO ----------
   hero: {
+    h1: "Hochzeitsfotograf aus Wuppertal für ganz NRW",
     tag: "Fotografie · Wuppertal & NRW",
     titleLine1: "Momente,",
     titleLine2Prefix: "die ",
     titleLine2Em: "bleiben",
     subtitle: "Ich fotografiere Hochzeiten, Portraits und Events. Echte Momente, echte Emotionen. Keine Standardposen, sondern Bilder, die sich nach euch anfühlen.",
-    image: "images/hero.jpg",
-    imageFallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/919c4157-625a-415a-bead-4af745e25453/_DSC2039.JPG"
+    image: "images/hero.webp",
+    imageAlt: "Braut mit Schleier und weißer Sonnenbrille trinkt Kaffee in einem Café",
+    imageFallback: ""
   },
 
   // ---------- ÜBER MICH ----------
   about: {
+    // Zitierfähiger Absatz: Wer, Was, Wo, Preis, wie anfragen
+    lead: "Jamie's Lens ist das Fotografie-Angebot von Jamie-Lee Riedel, Hochzeitsfotograf aus Wuppertal mit fünf Jahren Erfahrung und über 15 begleiteten Hochzeiten. Ich begleite Hochzeiten in Wuppertal, Düsseldorf, im Bergischen Land und in ganz NRW – natürlich und ohne Standardposen. Hochzeitsreportagen gibt es ab 300 €; anfragen könnt ihr über das Kontaktformular, per WhatsApp oder per E-Mail.",
     image: "images/fotograf-jamie-lee-riedel-wuppertal.jpg",
+    imageAlt: "Jamie-Lee Riedel, Hochzeitsfotograf aus Wuppertal, mit Kamera vor einem türkisfarbenen Bus",
     imageFallback: "",
     paragraphs: [
-      "Hey, ich bin Jamie. Ich komme aus Wuppertal und fotografiere seit ein paar Jahren das, was mich am meisten begeistert: echte Menschen in echten Momenten.",
+      "Hey, ich bin Jamie. Ich komme aus Wuppertal und fotografiere seit fünf Jahren das, was mich am meisten begeistert: echte Menschen in echten Momenten.",
       "Mir ist es wichtig, dass ihr euch vor meiner Kamera wohlfühlt. Kein steifes Posing, kein Stress. Wir lernen uns vorher kennen, quatschen ein bisschen und wenn es dann losgeht, seid ihr einfach ihr selbst.",
       "Meine Bilder sind natürlich, ehrlich und haben Stimmung. Die Art von Fotos, die ihr euch in zehn Jahren anschaut und sofort wieder wisst, wie sich dieser Moment angefühlt hat."
     ],
     stats: [
-      { num: "10+",  label: "Hochzeiten fotografiert" },
-      { num: "3+",   label: "Jahre Erfahrung" },
-      { num: "100%", label: "mit Herzblut dabei" },
-      { num: "NRW",  label: "& deutschlandweit" }
+      { num: "15+", label: "Hochzeiten begleitet" },
+      { num: "5",   label: "Jahre Erfahrung" },
+      { num: "NRW", label: "und auf Anfrage deutschlandweit" }
     ]
   },
 
   // ---------- GALERIE ----------
+  // Auf der Startseite erscheinen die ersten "homeCount" Bilder,
+  // auf /portfolio/ alle.
   gallery: {
+    homeCount: 9,
     categories: ["Hochzeit", "Portrait", "Event", "Mood"],
     items: [
-      { src: "images/hochzeit-brautpaar-standesamt-treppen.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar verlässt das Standesamt mit Seifenblasen" },
-      { src: "images/hochzeit-brautpaar-parkbank-kuss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar auf der Parkbank, intimer Moment" },
-      { src: "images/hochzeit-erster-tanz-gaeste.jpg", fallback: "", category: "Hochzeit", alt: "Erster Tanz mit begeisterten Gästen" },
-      { src: "images/hochzeit-standesamt-trauung.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar bei der Trauung im Standesamt" },
-      { src: "images/galerie-01.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/583ac145-8900-4edb-8bbc-a98d1fea6a47/R0001404.JPG", category: "Portrait", alt: "Portrait Shooting" },
-      { src: "images/hochzeit-brautpaar-zeremonie.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar bei der Zeremonie mit Blumenstrauss" },
-      { src: "images/hochzeit-groomsmen-gruppenfoto.jpg", fallback: "", category: "Hochzeit", alt: "Groomsmen Gruppenfoto bei der Hochzeit" },
-      { src: "images/galerie-02.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/a945f144-7a79-432c-9e70-24fb18689f84/R0000495.JPG", category: "Event", alt: "Event Fotografie" },
-      { src: "images/hochzeit-gaeste-feier.jpg", fallback: "", category: "Hochzeit", alt: "Gäste feiern ausgelassen auf der Hochzeit" },
-      { src: "images/hochzeit-brautpaar-schwarzweiss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar Portrait in Schwarzweiss" },
-      { src: "images/galerie-04.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/bd1d706d-7938-473c-8b25-c6b7d7c5fd41/R0001705-2.jpg", category: "Portrait", alt: "Portrait" },
-      { src: "images/galerie-03.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/c5daf944-640c-4669-a5de-89d8bf452923/_DSC1282-2.jpg", category: "Hochzeit", alt: "Hochzeitsfotografie" },
-      { src: "images/hochzeit-brautpaar-schloss-schwarzweiss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar vor dem Schloss in Schwarzweiss" },
-      { src: "images/galerie-05.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/fc136b07-457e-4b8c-be9c-d66b586ea1d9/_DSC1021.jpg", category: "Event", alt: "Event" },
-      { src: "images/galerie-06.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/1725563575294-HA7USCWTOGUA0EMXES3V/_DSC0954.jpg", category: "Mood", alt: "Stimmungsbild" },
-      { src: "images/galerie-07.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/6c3273a1-73ff-4247-90f1-7e624daa4609/_DSC1119-2.jpg", category: "Portrait", alt: "Portrait" },
-      { src: "images/galerie-08.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/9f2d9e5f-ccad-43f9-bd51-0f4f6902ca0a/_Z005251.jpg", category: "Hochzeit", alt: "Hochzeit" },
-      { src: "images/galerie-09.jpg", fallback: "https://images.squarespace-cdn.com/content/v1/64b2105e1f2d614b93c9660d/15023dc1-425c-43e3-8d10-3175a1f90169/_DSC6961.jpg", category: "Hochzeit", alt: "Brautpaar hält Hände bei der Hochzeit" }
+      { src: "images/hochzeit-brautpaar-standesamt-treppen.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar verlässt Hand in Hand das Standesamt über die Treppe" },
+      { src: "images/hochzeit-brautpaar-parkbank-kuss.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar sitzt auf einer Parkbank und schaut sich verliebt an" },
+      { src: "images/hochzeit-erster-tanz-gaeste.jpg", fallback: "", category: "Hochzeit", alt: "Bräutigam im weißen Sakko beim ersten Tanz mit der Braut, Gäste schauen zu" },
+      { src: "images/hochzeit-standesamt-trauung.jpg", fallback: "", category: "Hochzeit", alt: "Brautpaar lacht bei der Trauung im Standesamt, umgeben von Gästen" },
+      { src: "images/galerie-01.jpg", fallback: "", category: "Portrait", alt: "Nahaufnahme einer Frau mit weißer Blüte im Haar und silbernem Ohrring" },
+      { src: "images/hochzeit-brautpaar-zeremonie.jpg", fallback: "", category: "Hochzeit", alt: "Lachendes Brautpaar bei einer freien Trauung, die Braut hält einen Blumenstrauß" },
+      { src: "images/hochzeit-groomsmen-gruppenfoto.jpg", fallback: "", category: "Hochzeit", alt: "Bräutigam im weißen Sakko mit seinen Freunden in schwarzen Anzügen und Sonnenbrillen" },
+      { src: "images/galerie-02.webp", fallback: "", category: "Portrait", alt: "Tätowierter Mann verdeckt ein Auge mit einem Blatt, Portrait zwischen großen grünen Pflanzen" },
+      { src: "images/hochzeit-gaeste-feier.jpg", fallback: "", category: "Hochzeit", alt: "Zwei Hochzeitsgäste in gemusterten Hemden jubeln in die Kamera" },
+      { src: "images/hochzeit-brautpaar-schwarzweiss.jpg", fallback: "", category: "Hochzeit", alt: "Schwarzweißfoto: Die Braut streicht dem Bräutigam zärtlich über das Gesicht" },
+      { src: "images/galerie-04.webp", fallback: "", category: "Portrait", alt: "Frau hält zwei brennende Schwerter über dem Kopf auf einer Wiese unter dunklem Himmel" },
+      { src: "images/galerie-03.webp", fallback: "", category: "Hochzeit", alt: "Bräutigam küsst die Stirn der Braut, ihre Hand mit Ehering liegt auf seiner Brust" },
+      { src: "images/hochzeit-brautpaar-schloss-schwarzweiss.jpg", fallback: "", category: "Hochzeit", alt: "Schwarzweißfoto: Brautpaar hält sich an den Händen vor einem Schloss am Wasser" },
+      { src: "images/galerie-05.webp", fallback: "", category: "Portrait", alt: "Frau mit platinblonden Haaren liegt auf einem Bett und hält ein Buch über sich" },
+      { src: "images/galerie-06.webp", fallback: "", category: "Hochzeit", alt: "Brautpaar küsst sich, Freunde jubeln ausgelassen um sie herum" },
+      { src: "images/galerie-07.webp", fallback: "", category: "Portrait", alt: "Blonde Frau liegt kopfüber auf einem Ledersofa und liest eine Zeitschrift" },
+      { src: "images/galerie-08.webp", fallback: "", category: "Portrait", alt: "Frau mit langen Zöpfen posiert sitzend zwischen zwei blauen Laternen" },
+      { src: "images/galerie-09.webp", fallback: "", category: "Hochzeit", alt: "Brautpaar schreitet Hand in Hand die Treppe des Standesamts hinunter" }
     ]
   },
 
@@ -77,33 +98,37 @@ window.SITE_CONTENT = {
       name: "Hochzeit",
       desc: "Euer großer Tag, so festgehalten, wie er sich wirklich anfühlt. Ich bin den ganzen Tag an eurer Seite, halte mich im Hintergrund und fange genau die Momente ein, an die ihr euch für immer erinnern wollt.",
       includes: ["Ganztages-Begleitung möglich", "Vorgespräch zum Kennenlernen", "Alle wichtigen Momente", "Individuell auf euch abgestimmt"],
-      price: "auf Anfrage",
+      price: "ab 300 €",
+      priceFrom: 300,
       priceNote: "Jede Hochzeit ist anders",
-      cta: "Unverbindlich anfragen →"
+      cta: "Unverbindlich anfragen"
     },
     {
       name: "Portrait",
       desc: "Ein Shooting nur für dich. Entspannt, ohne Druck und mit Bildern, auf denen du dich wirklich erkennst.",
       includes: ["1 Person", "1 Stunde Shooting", "15 bearbeitete Fotos", "Online-Galerie zum Download"],
       price: "100 €",
+      priceFrom: 100,
       priceNote: "Festpreis",
-      cta: "Jetzt buchen →"
+      cta: "Termin anfragen"
     },
     {
       name: "Couple / Familie",
       desc: "Für Paare, Familien oder eure beste Crew. Einfach zusammen sein, Spaß haben und nebenbei richtig gute Bilder mitnehmen.",
       includes: ["2 oder mehr Personen", "1 Stunde Shooting", "20 bearbeitete Fotos", "Online-Galerie zum Download"],
       price: "150 €",
+      priceFrom: 150,
       priceNote: "Festpreis",
-      cta: "Jetzt buchen →"
+      cta: "Termin anfragen"
     },
     {
       name: "Events",
       desc: "Ob Firmenevent, Geburtstagsfeier oder Konzert. Ich halte die Stimmung fest, die Energie und die Gesichter, die den Abend ausmachen.",
       includes: ["Flexible Zeitplanung", "Schnelle Lieferung", "Individuelles Angebot", "Erfahrung mit großen Events"],
       price: "ab 300 €",
+      priceFrom: 300,
       priceNote: "Je nach Umfang",
-      cta: "Unverbindlich anfragen →"
+      cta: "Unverbindlich anfragen"
     }
   ],
 
@@ -141,7 +166,7 @@ window.SITE_CONTENT = {
 
   // ---------- KONTAKT ----------
   contact: {
-    introText: "Du hast Interesse oder einfach eine Frage? Schreib mir gerne. Egal ob du schon einen festen Termin im Kopf hast oder erstmal nur schauen willst, was möglich ist. Ich freu mich auf deine Nachricht.",
+    introText: "Ihr habt Interesse oder einfach eine Frage? Schreibt mir gerne. Egal ob ihr schon einen festen Termin im Kopf habt oder erstmal nur schauen wollt, was möglich ist. Ich freu mich auf eure Nachricht.",
     email: "jamie.lee.riedel@gmail.com",
     phone: "+49 1771 846741",
     location: "Wuppertal · NRW · deutschlandweit",
@@ -151,5 +176,71 @@ window.SITE_CONTENT = {
     whatsappNumber: "491771846741",
     whatsappGreeting: "Hey Jamie! Ich hätte Interesse an einem Shooting.",
     formspreeId: "xgogplrd"
+  },
+
+  // ---------- HOCHZEITSPAKETE (/preise/ und Stadtseiten) ----------
+  weddingPackages: [
+    {
+      name: "Standesamt",
+      hours: "~2 Stunden",
+      images: "100+ bearbeitete Bilder",
+      price: 300,
+      desc: "Für die standesamtliche Trauung oder eine kleine Feier im engsten Kreis.",
+      includes: ["Kostenloses Vorgespräch", "Trauung, Gratulationen & Gruppenfotos", "Kurzes Paarshooting", "Private Online-Galerie zum Download"]
+    },
+    {
+      name: "Hochzeitsreportage",
+      hours: "~6 Stunden",
+      images: "300+ bearbeitete Bilder",
+      price: 1000,
+      highlight: true,
+      desc: "Der Klassiker: von den Vorbereitungen oder der Trauung bis in den Abend.",
+      includes: ["Kostenloses Vorgespräch", "Trauung, Paarshooting, Gruppenfotos & Feier", "Vorschau-Bilder nach wenigen Tagen", "Private Online-Galerie zum Download"]
+    },
+    {
+      name: "Ganzer Tag",
+      hours: "~10 Stunden",
+      images: "500+ bearbeitete Bilder",
+      price: 1500,
+      desc: "Vom Getting Ready bis zur Party – ich begleite euren kompletten Tag.",
+      includes: ["Kostenloses Vorgespräch", "Getting Ready bis Party", "Vorschau-Bilder nach wenigen Tagen", "Private Online-Galerie zum Download"]
+    }
+  ],
+  weddingPackagesNote: "Jede weitere Stunde: 150 €. Anfahrt bis 30 km um Wuppertal inklusive. Ihr braucht etwas dazwischen? Schreibt mir – ich passe jedes Paket an euch an.",
+
+  // ---------- UNTERSEITEN ----------
+  pages: {
+    preise: {
+      title: "Preise Hochzeitsfotograf Wuppertal – Jamie's Lens",
+      description: "Was kostet ein Hochzeitsfotograf in Wuppertal? Standesamt 300 €, ~6 Stunden mit 300+ Bildern 1.000 €, ganzer Tag 1.500 €. Jetzt anfragen.",
+      h1: "Preise für Hochzeits- und Portraitfotografie",
+      intro: "Hier findest du alle aktuellen Preise auf einen Blick. Für Hochzeiten gibt es drei Pakete – vom Standesamt ab 300 € bis zur Ganztagesbegleitung. Schreib mir, was ihr vorhabt, und ich passe das Paket an euch an."
+    },
+    portfolio: {
+      title: "Portfolio Hochzeitsfotografie Wuppertal & NRW – Jamie's Lens",
+      description: "Ausgewählte Hochzeitsreportagen, Portraits und Paarshootings von Jamie's Lens aus Wuppertal – natürlich, ehrlich und ohne Standardposen.",
+      h1: "Portfolio: Hochzeiten und Portraits",
+      intro: "Eine Auswahl meiner Arbeiten – Hochzeiten in Wuppertal und NRW, dazu Portrait- und Paarshootings. Über die Filter kannst du nach Kategorie sortieren."
+    },
+    wuppertal: {
+      slug: "hochzeitsfotograf-wuppertal",
+      title: "Hochzeitsfotograf Wuppertal | Jamie's Lens",
+      description: "Hochzeitsfotograf in Wuppertal und im Bergischen Land: natürliche Hochzeitsreportagen ohne Standardposen. Hochzeit ab 300 €. Jetzt unverbindlich anfragen.",
+      h1: "Hochzeitsfotograf in Wuppertal",
+      intro: [
+        "Ich bin Jamie-Lee Riedel, Fotograf aus Wuppertal. Unter dem Namen Jamie's Lens begleite ich Hochzeiten hier in der Stadt und im Bergischen Land – vom Standesamt über die Feier bis zum letzten Tanz, natürlich und ohne steifes Posing.",
+        "Bis 30 km um Wuppertal ist die Anfahrt inklusive. Hochzeitsreportagen gibt es ab 300 €."
+      ]
+    },
+    duesseldorf: {
+      slug: "hochzeitsfotograf-duesseldorf",
+      title: "Hochzeitsfotograf Düsseldorf | Jamie's Lens",
+      description: "Hochzeitsfotograf für Düsseldorf aus dem nahen Wuppertal: natürliche Hochzeitsreportagen ohne Standardposen. Hochzeit ab 300 €. Jetzt anfragen.",
+      h1: "Hochzeitsfotograf für Düsseldorf",
+      intro: [
+        "Ich bin Jamie-Lee Riedel, Fotograf aus dem benachbarten Wuppertal. Unter dem Namen Jamie's Lens begleite ich auch Hochzeiten in Düsseldorf – natürlich, entspannt und ohne Standardposen.",
+        "Die Anfahrt besprechen wir vorab transparent, damit es für beide Seiten passt. Hochzeitsreportagen gibt es ab 300 €."
+      ]
+    }
   }
 };

@@ -1,5 +1,21 @@
 # 📸 Jamie's Lens — Anleitung: Live gehen & Website pflegen
 
+> ## ⚡ Neu seit Oktober 2026: Die Seiten werden automatisch gebaut
+>
+> Inhalte stehen weiterhin **nur in `content.js`** (bearbeiten über `admin.html`).
+> Sobald du eine neue `content.js` oder neue Bilder auf GitHub hochlädst, baut eine
+> GitHub Action (Tab **Actions** im Repo) daraus automatisch fertige HTML-Seiten
+> und Bildvarianten. Nach 2–3 Minuten ist alles live.
+>
+> - **Nicht von Hand ändern:** `index.html`, `preise/`, `portfolio/`,
+>   `hochzeitsfotograf-wuppertal/`, `hochzeitsfotograf-duesseldorf/`, `impressum.html`, `datenschutz.html`, `sitemap.xml`,
+>   `images/r/`, `images/manifest.json` – diese Dateien werden bei jedem Build überschrieben.
+> - **Impressum & Datenschutz** werden ebenfalls gebaut: Texte in `src/legal/impressum.html` bzw. `src/legal/datenschutz.html` ändern, nicht in den Dateien im Hauptordner.
+> - **Design ändern:** `src/styles.css` · **Verhalten (Menü, Formular, Galerie):** `site.js`
+> - **Neues Bild:** in `images/` hochladen, in `admin.html` eintragen (Pfad + Alt-Text, z. B.
+>   „Brautpaar beim ersten Tanz in …“), neue `content.js` hochladen. Varianten entstehen automatisch.
+> - Wenn die Action rot (fehlgeschlagen) ist: Tab **Actions** öffnen, Fehlermeldung ansehen.
+
 Diese Anleitung führt dich in 5 Schritten zur fertigen Website. Zeitaufwand insgesamt: ca. 1–2 Stunden.
 
 ---
