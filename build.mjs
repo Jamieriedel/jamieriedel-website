@@ -290,7 +290,6 @@ function sectionAbout({ links = '' } = {}) {
     </div>
     <div class="about-text">
       <h2>Hallo, ich bin Jamie-Lee</h2>
-      ${a.lead ? `<p class="about-lead">${esc(a.lead)}</p>` : ''}
       ${a.paragraphs.map((p) => `<p>${esc(p)}</p>`).join('\n      ')}
       <dl class="facts">
         ${a.stats.map((s) => `<div><dt>${esc(s.num)}</dt><dd>${esc(s.label)}</dd></div>`).join('\n        ')}
@@ -305,49 +304,32 @@ function sectionAbout({ links = '' } = {}) {
 function figure(it, sizes) {
   return `<figure class="gallery-item" data-category="${esc(it.category)}" data-full="${esc(largest(it.src))}">
         ${img(it.src, { alt: it.alt || it.category, sizes })}
+        <figcaption class="gallery-item-tag">${esc(it.category)}</figcaption>
       </figure>`;
 }
 
-/** Mosaik: Die 6. Kachel ist ein Panorama – dort ein Querformat platzieren. */
-function arrangeForMosaic(items) {
-  const out = items.slice(0, 6);
-  const isLandscape = (it) => { const m = manifest[it.src]; return m && m.width > m.height; };
-  if (out.length === 6 && !isLandscape(out[5])) {
-    const i = out.findIndex(isLandscape);
-    if (i !== -1) { const [l] = out.splice(i, 1); out.push(l); }
-    else { const extra = items.slice(6).find(isLandscape); if (extra) out[5] = extra; }
-  }
-  return out;
-}
-
-function sectionMosaic({ items, title, lede = '', more = true }) {
-  items = arrangeForMosaic(items);
-  return `<section id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>${esc(title)}</h2>
-      ${lede ? `<p class="lede">${esc(lede)}</p>` : ''}
-    </div>
-    <div class="mosaic">
-      ${items.map((it) => figure(it, '(max-width: 640px) 100vw, 60vw')).join('\n      ')}
-    </div>
-    ${more ? `<div class="section-foot"><a href="/portfolio/" class="link">Alle Arbeiten im Portfolio</a><a href="#contact" class="btn btn-ghost">Termin anfragen</a></div>` : ''}
-  </div>
-</section>`;
-}
-
-function sectionPortfolio(items) {
+/** Galerie wie im alten Design: Masonry-Raster, Filter, Kategorie beim Überfahren. */
+function sectionPortfolio(items, { title = '', lede = '', more = false, filters: showFilters = true, top = false } = {}) {
   const used = C.gallery.categories.filter((c) => items.some((i) => i.category === c));
-  const filters = used.length > 1
+  const filters = showFilters && used.length > 1
     ? `<div class="gallery-filters" role="group" aria-label="Nach Kategorie filtern">${['Alle', ...used].map((c, i) =>
       `<button type="button" class="filter-btn${i === 0 ? ' active' : ''}" data-filter="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join('')}</div>`
     : '';
-  return `<section id="gallery" style="padding-top:0">
+  const head = title ? `<div class="gallery-header">
+      <div class="section-head" style="margin-bottom:0">
+        <h2>${esc(title)}</h2>
+        ${lede ? `<p class="lede">${esc(lede)}</p>` : ''}
+      </div>
+      <a href="#contact" class="btn btn-ghost">Termin anfragen</a>
+    </div>` : '';
+  return `<section id="gallery"${top ? ' style="padding-top:0"' : ''}>
   <div class="wrap">
+    ${head}
     ${filters}
     <div class="gallery-grid">
       ${items.map((it) => figure(it, '(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw')).join('\n      ')}
     </div>
+    ${more ? '<div class="section-foot"><a href="/portfolio/" class="link">Alle Arbeiten im Portfolio</a></div>' : ''}
   </div>
 </section>`;
 }
@@ -444,10 +426,10 @@ function sectionTestimonials() {
     <div class="section-head center">
       <h2>Was Kund:innen sagen</h2>
     </div>
-    <div class="quotes">
-      ${C.testimonials.map((t) => `<figure class="quote">
-        <blockquote><p>${esc(t.text)}</p></blockquote>
-        <figcaption>${esc(t.name)} <span>· ${esc(t.event)}</span></figcaption>
+    <div class="bubbles">
+      ${C.testimonials.map((t) => `<figure class="bubble">
+        <blockquote class="bubble-body"><p>${esc(t.text)}</p></blockquote>
+        <figcaption class="bubble-author"><span class="bubble-name">${esc(t.name)}</span><span class="bubble-event">${esc(t.event)}</span></figcaption>
       </figure>`).join('\n      ')}
     </div>
   </div>
@@ -536,7 +518,7 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
   const hero = sectionHero();
   const main = [
     hero.html,
-    sectionMosaic({ items: weddingItems, title: 'Ausgewählte Hochzeiten', lede: 'Echte Paare, echte Tage – vom Standesamt in Wuppertal bis zur Feier im Grünen.' }),
+    sectionPortfolio(C.gallery.items, { title: 'Ausgewählte Arbeiten', lede: 'Hochzeiten, Portraits und Paare – echte Menschen, echte Momente.' }),
     sectionAbout({ links: cityLinks() }),
     sectionTestimonials(),
     sectionPackages(),
@@ -584,7 +566,7 @@ const wedding = C.services.find((s) => s.name === 'Hochzeit');
   const url = SITE + '/portfolio/';
   const main = [
     pageIntro({ crumb: 'Portfolio', h1: P.h1, paragraphs: [P.intro], cta: false }),
-    sectionPortfolio(C.gallery.items),
+    sectionPortfolio(C.gallery.items, { top: true }),
     sectionTestimonials(),
     sectionContact()
   ].join('\n\n');
@@ -610,7 +592,7 @@ for (const key of ['wuppertal', 'duesseldorf']) {
        (Alt-Text mit Ort). Keine erfundenen Orte eintragen. -->`;
   const main = [
     pageIntro({ crumb: 'Hochzeitsfotograf ' + city, h1: P.h1, paragraphs: P.intro }) + '\n' + todo,
-    sectionMosaic({ items: key === 'wuppertal' ? weddingItems : [...weddingItems].reverse(), title: 'Hochzeiten aus meiner Kamera', more: true }),
+    sectionPortfolio((key === 'wuppertal' ? weddingItems : [...weddingItems].reverse()).slice(0, 9), { title: 'Hochzeiten aus meiner Kamera', filters: false, more: true }),
     sectionTestimonials(),
     sectionPackages({ title: 'Pakete für eure Hochzeit', others: false }),
     sectionProcess(),
