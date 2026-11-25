@@ -1,0 +1,31 @@
+{
+ "name": "JAILR Prep",
+ "short_name": "JAILR Prep",
+ "description": "Cues, Energie, Set-Planung und Set Master für DJs. Läuft lokal im Browser.",
+ "lang": "de",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#11100F",
+ "theme_color": "#11100F",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
